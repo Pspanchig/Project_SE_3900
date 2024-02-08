@@ -4,6 +4,8 @@ import videoBackgrond from './assets/pexels-tima-miroshnichenko-6498240 (2160p).
 const LoginPage = () => {
 
   const [goback] = ("index.html")
+  const [goCreAc] = ("CreateAccount.html")
+
   return (
     <div className='LoginBox'>
 
@@ -28,7 +30,7 @@ const LoginPage = () => {
         <div>
             <ul>
               <li>
-                <a href="">Create New account</a>
+                <a href="CreateAccount.html">Create New account</a>
               </li>
               <li>
                 <a href={goback}>Go Back</a>
