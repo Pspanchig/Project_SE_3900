@@ -20,10 +20,4 @@ body{
   color: white;
   margin: 0;
 }
-.secondContainer{
-  height: 100vh;
-  background-color: black;
-  background-size: cover; 
-  background-position: center; 
-  background-repeat: no-repeat; 
-}
+

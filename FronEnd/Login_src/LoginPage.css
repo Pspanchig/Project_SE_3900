@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 .LoginBox{
     margin: 0;
     display: flex;    
     justify-content: left;
     align-items: center;
+    height: 100vh;
     width: 100%;
 }
 body{
@@ -13,7 +16,7 @@ body{
 }
 .VideoBackground video{
     object-fit: cover;
-    height: 100vh;
+    max-height: 100vh;
     width: 100vh;    
 }
 .loginForm{   
@@ -22,14 +25,17 @@ body{
     margin-left: 20vh;    
 }
 .loginForm h1{
+    font-size: 4vh;
+    font-family: 'Bebas Neue', sans-serif;
     text-align: center;
 }
 .loginForm form{
+    font-size: 2dvh;
     color: black;
     box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.517);
     border-radius: 1em;
-    padding-left: 3em;
-    padding-right: 3em;
+    padding-left: 2em;
+    padding-right: 2em;
     padding-top: 1.5em;
     padding-bottom: 1em;
     background-color: white;
