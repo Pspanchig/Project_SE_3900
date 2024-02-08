@@ -1,0 +1,36 @@
+.MenuNavBar{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center;     */
+    /* margin: 1em; */
+    margin-top: 0.3em;
+}
+.Title{
+    margin-left: 5vh;
+    display: flex;
+    align-items: center;
+}
+.MenuNavBar img{
+    margin-left: 1em;
+    height: 2em;
+    color: white;
+}
+.Navbar{
+    display: flex;
+    justify-content: center;    
+    padding: 0.3em;
+    background-color: var(--Color1);
+    
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.MenuNavBar ul{
+    list-style: none;
+}
+.NavItem{
+    margin-left: 1em;
+    margin-right: 1em;
+}
+

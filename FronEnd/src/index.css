@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+:root{
+  --Color1: #B80000;
+  background-color: gray;
+  font-family: 'Rubik', sans-serif;
+}
+
+.mainContianer{
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0) 50%, black 100%),url('./assets/Background MyProject.jpg');
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  height: 100dvh;  
+  display: flex;
+  flex-direction: column;
+}
+
+body{
+  color: white;
+  margin: 0;
+}
+.secondContainer{
+  height: 100vh;
+  background-color: black;
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+}
