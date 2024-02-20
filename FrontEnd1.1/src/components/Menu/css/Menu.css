@@ -1,0 +1,11 @@
+:root{
+    --Dash-Color1: #FFFFFF;
+}
+.menuSection1{
+    text-align: center;    
+    padding: 0.5em;
+}
+.menu{
+    display: flex;
+    flex-direction: column;
+}

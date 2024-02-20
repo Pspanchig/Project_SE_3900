@@ -1,0 +1,42 @@
+:root{
+    --Background-Second: #5D576B;
+    --F-Box: #656073;
+}
+.SecondSectionMenu{
+    margin-top: 37vh;
+    height: 90vh;
+    background: var(--Background-Second);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.textcontainerMenu{
+    text-align: center;
+}
+.textcontainerMenu h1{
+    font-size: 4vh;
+}
+
+.FeaturesBox{
+    padding: 0.5em;
+    display:flex ;
+    align-items: center;
+    height: 17vh;
+    width: 50vh;
+    background-color: var(--F-Box);
+    margin: 3vh;
+}
+.FeaturesBox img{
+    width: 10vh;
+    margin-right: 2em;
+}
+.BoxContainer{
+    margin: 5em;
+    margin-top: 3em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* background-color: red; */
+    width: 120vh;
+}

@@ -1,0 +1,106 @@
+:root{
+    --Buttons-Color: #F59A23
+}
+.menuSection1{
+    padding: 0;
+    background-color: var(--Dash-Color1);
+    color: black;
+    
+}
+.NavLog_Reg{
+    display: flex;
+    align-items: center;
+    
+}
+.NavButtons a{
+    margin: 1em;
+    text-decoration: none;
+    color: black;
+}
+.NavButtons ul{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+.MenuTitle{
+    color: black;
+    padding: 0.1em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.MenuTitle h1:first-child{
+    margin-right: auto;    
+    margin-left: 2vh;
+}
+.MenuTitle .NavLog_Reg:last-child{
+    margin-left: auto;
+}
+.MenuTitle img{
+    width: 2vh;
+    height: 2vh;
+}
+.content1 {
+    
+    position: relative;
+    height: 30vh;
+    z-index: 1;
+}
+#RegisterBM{
+    padding: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
+    border: none;
+    background-color: var(--Buttons-Color);
+    color: white;
+    text-shadow: 1px 2px 5px black;
+}
+.NavLog_Reg a, button{
+    margin: 1em;
+}
+#MainTitleText{
+    margin-top: 0;
+    font-size: 6vh;
+}
+.PablosDesing{
+    
+    display: flex;        
+    left: 10;
+    margin: 0;
+    margin-top: 10vh;
+
+}
+.Subdivdesing{    
+    width: 113vh;
+    height: 5vh;
+}
+.StartButtons{
+    margin-top: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.StartButtons button{
+    
+    border: none;    
+}
+#getStarted{
+    font-size: 2vh;
+    background-color: var(--Buttons-Color);
+    height: 6vh;
+    width: 15vh;
+    color: white;
+}
+#learnMore{
+    font-size: 2vh;
+    background-color: white;
+}
+.StartButtons img{
+    height: 5vh;
+}
+#aHolder{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
