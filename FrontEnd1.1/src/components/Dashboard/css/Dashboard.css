@@ -1,6 +1,7 @@
 .dashboard{
-    height: 100vh;
+    height: 100vh;    
     background-color: #D7D7D7;    
+    display: flex;
 }
 .navbar {
     background-color: #5D576B;

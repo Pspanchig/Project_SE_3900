@@ -2,6 +2,7 @@ import React from 'react'
 import "./css/Dashboard.css"
 import NavBarDashboard from './NavBarDashboard'
 import { useState, useEffect } from 'react';
+import DashboardMenu from './DashboardMenu';
 
 const Dashboard = () => {
 
@@ -28,6 +29,7 @@ const Dashboard = () => {
   return (
     <div className='dashboard'>
       <NavBarDashboard />
+      <DashboardMenu/>
       {/* <h2 onClick={ChangeValue}>Are you logged? {savedValue.toString()}</h2> */}
 
     </div>

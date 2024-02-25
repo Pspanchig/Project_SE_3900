@@ -1,0 +1,64 @@
+.dashboard-menu{
+    margin: 3em;
+    margin-top: 3em;            
+}
+
+.DashBoardTitle{    
+    height: 8vh;
+    padding: 0.5em;
+    border-radius: 0.65em;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 90dvw;
+    /* align-items: start; */
+    margin: 0;
+}
+.DashBoardTitle h2,.DashBoardTitle p{    
+    margin: 0;
+}
+.TodayData{
+    margin-top: 3em;
+    height: 30vh;
+    padding: 0.5em;
+    border-radius: 0.65em;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 90dvw;
+}
+.TodayData h4, .TodayData .DBDataCard-Container{
+    margin-left: 2em;
+}
+#Online{
+    color: green;
+}
+.DBDataCard-Container{
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+}
+.DBDataCard{
+    margin-right: 3em;
+    border-radius: 0.65em;
+    padding: 1em;
+    width: 20vh;
+    background-color: #FFFF80;    
+}
+.DBDataCard-Status{
+    display: flex;    
+}
+.DBDataCard-Status p{    
+    margin-right: 3em;
+}
+
+.SecondaryData{
+    margin-top: 3em;
+    height: 35vh;
+    padding: 0.5em;
+    border-radius: 0.65em;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 90dvw;
+}
