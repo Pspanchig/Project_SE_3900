@@ -1,6 +1,5 @@
 import React, { Component, useEffect } from 'react';
 import './css/Protected.css';
-import Login from '../Login/Login.jsx';
 import { useNavigate } from 'react-router-dom';
 
 const Protected = (props) => {
@@ -16,16 +15,14 @@ const Protected = (props) => {
                 navigate('/verify');
                 setTimeout(() => {
                     navigate("/");
-                }, 1000);
+                }, 2000);
             }
         }
         authorization();
     }, [])
 
-  return ( 
-        <>
-            <Component/>
-        </>
+  return (         
+        <Component/>        
   );
 }
 
