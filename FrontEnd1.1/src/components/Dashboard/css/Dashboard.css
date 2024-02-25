@@ -1,6 +1,14 @@
-
+.dashboard{
+    height: 100vh;
+    background-color: #D7D7D7;    
+}
 .NavBarDash{
-    text-align: center;
-    background-color: black;
+    width: 7vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;    
     padding: 0.5em;
+    color:white;
+    background-color: #5D576B;
 }

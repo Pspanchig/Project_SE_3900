@@ -1,0 +1,21 @@
+.VerifyContainer{
+    height: 100vh;   
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.VerifyBox{
+    text-align: center;
+    height: 40vh;
+    width: 50vh;    
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* background-color: aqua; */
+}
+#VFailed{
+    color: red;
+}

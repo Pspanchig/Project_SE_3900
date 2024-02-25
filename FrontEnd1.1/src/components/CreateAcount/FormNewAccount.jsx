@@ -31,15 +31,23 @@ const FormNewAccount = () => {
             }
         }
         
+        const getIP = async () => {
+            const URL = 'https://api.ipify.org?format=json';
+            const response = await fetch(URL);
+            const data = await response.json();
+            return data.ip;
+        };                
+
         const sendPHP = async () => {
             const name = document.getElementById("name").value;
             const password = document.getElementById("Password").value;
-            const adminValue = document.getElementById('selector').value;
-        
+            const adminValue = document.getElementById('selector').value;            
+
             const formData = new FormData();
             formData.append('Name', name);
             formData.append('Password', password);
-            formData.append('admin', adminValue);
+            formData.append('Is_admin', adminValue);
+            formData.append('IP', await getIP());
         
             const url = "http://localhost/Php_login/Php_register.php";
             const response = await fetch(url, {
@@ -93,7 +101,7 @@ const FormNewAccount = () => {
         <label htmlFor="">Confirm your passowrd</label>
         <input type="Password" placeholder='Password' id='ConfirmPassword'/>
 
-        <select name="admin" id="selector" >
+        <select name="Is_admin" id="selector" >
             <option value="user" >user</option>
             <option value="Admin" n>Admin</option>
         </select>        
