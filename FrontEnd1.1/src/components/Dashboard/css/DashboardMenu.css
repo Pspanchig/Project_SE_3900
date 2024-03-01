@@ -24,19 +24,51 @@
     border-radius: 0.65em;
     background-color: white;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 90dvw;
+    justify-content: space-around;
+}
+.UsersConnectedContainer{
+    margin: 3vh;
+    margin-top: 0;
+    height: 20vh;
+    width: 100vh;
+}
+.UCSubContainer{
+    margin-top: 0;
+    background-color: #ECEAEB;
+    height: 100%;
+    width: 100%;
+    border-radius: 1em;
+    display: flex;
+    align-items: center;    
+}
+.UsersCard{
+    background-color: white;
+    margin: 3em;
+    padding: 2em;
+    width: 10vh;
+    max-width: 10vh;
+    max-height: 8vh;
+    text-align: center;
+    border-radius: 1em;
+}
+.UsersCard p{
+    margin-top: 0;
+}
+.SubContainer-DBCards{
+    display: flex;
+    flex-direction: row;
 }
 .TodayData h4, .TodayData .DBDataCard-Container{
     margin-left: 2em;
 }
-#Online{
-    color: green;
-}
+
 .DBDataCard-Container{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     overflow-x: auto;
+    width: fit-content;
 }
 .DBDataCard{
     margin-right: 3em;
@@ -61,4 +93,35 @@
     display: flex;
     flex-direction: column;
     width: 90dvw;
+}
+.UsersTable{
+ display: flex;
+ }
+ .employee-table {
+    width: 60vh;
+    max-width: 600px;
+    margin: 2em;
+    border-collapse: collapse;    
+  }
+  .UsersTable:first-child{
+    margin-right: auto;
+  }
+  .employee-table thead {
+    background-color: #6A5ACD;
+    color: #ffffff;
+  }
+  .employee-table thead tr th {
+    padding: 10px;
+    font-size: 16px;
+  }
+  .employee-table tbody tr td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #dddddd;
+  }
+  .employee-table tbody tr:nth-child(odd) {
+    background-color: #F2F2F2;
+  }
+  .employee-table .icon {
+    margin-right: 5px;
 }

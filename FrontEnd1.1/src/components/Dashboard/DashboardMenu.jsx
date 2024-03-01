@@ -4,8 +4,8 @@ import './css/DashboardMenu.css'
 
 const DashboardMenu = () => {
 
-    useEffect(() => {
-        const bringDB = async () => {
+    useEffect(()=>{
+        const bringIP_DB = async () => {
             const url = "http://localhost:8080/findAll";
             try {
                 const response = await fetch(url);
@@ -20,27 +20,50 @@ const DashboardMenu = () => {
                 throw error;
             }
         };
-        
-        const CreateDBCard = async () => { // This function now needs to be async to use await
+
+        const BringUsers_DB = async() =>{
+            const URL = 'http://localhost/Php_login/Php_login.php';
             try {
-                let dbData = await bringDB(); // Wait for the data to be fetched
+              const response = await fetch(URL);
+              if (!response.ok) {
+                throw new Error('The connection with the db failed somehow');
+              }
+              const data = await response.json();
+      
+              return data;
+            } catch (error) {
+              throw error
+            }
+        }
         
-                const container = document.getElementById('DBC-Container');
-                const card = document.createElement('div');
-                card.classList.add('DBDataCard');
-                card.textContent = "SEXO"; 
-                container.append(card);
-                console.log(dbData);
+        const TryDBConnection = async () => { 
+            const status = document.getElementById('Online')
+            const userStatus = document.getElementById('OnlineU')
+            try {
+                await bringIP_DB(); 
+                status.innerHTML = "Online";
+                status.style.color = 'green';
 
             } catch (error) {
                 console.error("Error while creating DB cards: ", error);
+                status.innerHTML = "Offline";
+                status.style.color = 'red';
             }
-        };
+
+            try {
+                await BringUsers_DB();
+                userStatus.innerHTML = "Online"
+                userStatus.style.color = 'green';
+            } catch(error){
+                userStatus.innerHTML = "Offline"
+                userStatus.style.color = 'red';
+
+            }
+        };    
             
-        document.addEventListener('DOMContentLoaded', CreateDBCard()); 
 
-    },[])
-
+        TryDBConnection();
+    })
 
 
   return (
@@ -50,37 +73,71 @@ const DashboardMenu = () => {
             <h2>Dashboard</h2>
         </div>
         <div className='TodayData'>
-            <h4>Today's Data</h4>
             <div className='DBDataCard-Container' id='DBC-Container'>
+            <h4>Today's Data</h4>
+            <div className='SubContainer-DBCards'>
                 <div className='DBDataCard'>
-                    <p>Data base 1</p>
-                    <p>Employeers 1</p>
+                    <p>Data base</p>
+                    <p>IP data base</p>
                     <div className='DBDataCard-Status'>
                         <p>Status</p>
-                        <p id='Online'>Online</p>
+                        <p id='Online'>loading...</p>
                     </div>
+                </div>
+                <div className='DBDataCard' style={{backgroundColor: "lightgreen"}}>
+                    <p>Data base</p>
+                    <p>Users data base</p>
+                    <div className='DBDataCard-Status'>
+                        <p>Status</p>
+                        <p id='OnlineU'>loading...</p>
+                    </div>
+                </div>
+            </div>  
+        </div>
+
+        <div className='UsersConnectedContainer'>
+        <h4>Users connected </h4>
+            <div className='UCSubContainer'>
+                <div className='UsersCard'>
+                    <h3>Pablo</h3>
+                    <p>048383829</p>
                 </div>
             </div>
         </div>
-        <div className='SecondaryData'>
-            <div className='UsersTable'>
-                <table>
+    </div>
+
+    <div className='SecondaryData'>
+        <div className='UsersTable'>
+            
+            <table class="employee-table">
+                <thead>
                     <tr>
-                        <th>
-                            UserNames
-                        </th>
-                        <th>
-                            Last Connection
-                        </th>
+                    <th>Employees <span class="icon">👤</span></th>
+                    <th>Last Connexion <span class="icon">⏰</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>John Doe</td>
+                    <td>...</td>
                     </tr>
                     <tr>
-                        <td>
-                            Pablito
-                        </td>
-                        <td>
-                            5 days ago
-                        </td>
+                    <td>Sponge Bob</td>
+                    <td>...</td>
                     </tr>
+                    <tr>
+                    <td>Pablo</td>
+                    <td>...</td>
+                    </tr>
+                    <tr>
+                    <td>John Doe</td>
+                    <td>...</td>
+                    </tr>
+                    <tr>
+                    <td>Andres</td>
+                    <td>...</td>
+                    </tr>
+                </tbody>
                 </table>
             </div>
         </div>
