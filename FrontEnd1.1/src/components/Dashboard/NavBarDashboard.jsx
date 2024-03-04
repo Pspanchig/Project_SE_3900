@@ -21,10 +21,10 @@ const NavBarDashboard = () => {
       <ul className="nav-links">
         <li className="nav-item"><Link to="/"><img src={useritem} alt="dashboardItem" /> <p>Home</p></Link></li>
         <li className="nav-item"><Link to="/dashboard"><img src={dashboardItem} alt="dashboardItem" /><p>Dashboard</p></Link></li>
-        <li className="nav-item"><Link to="/dashboard/db"><img src={db} alt="dashboardItem" /><p>Login</p></Link></li>
-        <li className="nav-item"><Link to="/login"><img src={modify} alt="dashboardItem" /><p>Text</p></Link></li>
-        <li className="nav-item"><Link to="/register"><img src={excel} alt="dashboardItem" /><p>Text</p></Link></li>
-        <li  className="nav-item"><Link to="/" onClick={logOut}><img src={exit} alt="dashboardItem" /><p>Text</p></Link></li>
+        <li className="nav-item"><Link to="/dashboard/manage"><img src={db} alt="dashboardItem" /><p>Manage</p></Link></li>
+        <li className="nav-item"><Link to="/login"><img src={modify} alt="dashboardItem" /><p>Modify</p></Link></li>
+        <li className="nav-item"><Link to="/register"><img src={excel} alt="dashboardItem" /><p>Export</p></Link></li>
+        <li  className="nav-item"><Link to="/" onClick={logOut}><img src={exit} alt="dashboardItem" /><p>Exit</p></Link></li>
         {/* <li onClick={logOut}>LogOut</li> */}
       </ul>
     </nav>

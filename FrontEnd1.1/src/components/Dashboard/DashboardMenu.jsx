@@ -1,9 +1,15 @@
 import React from 'react'
 import { useEffect } from 'react'
 import './css/DashboardMenu.css'
-
+import icon1 from '../../assets/refresh.svg'
+import { useNavigate } from 'react-router-dom'
 const DashboardMenu = () => {
 
+    const  navigate = useNavigate()
+
+    const goToManage = () =>{
+        navigate("/dashboard/manage");
+    }
     useEffect(()=>{
         const bringIP_DB = async () => {
             const url = "http://localhost:8080/findAll";
@@ -59,11 +65,62 @@ const DashboardMenu = () => {
                 userStatus.style.color = 'red';
 
             }
-        };    
-            
+        };      
+                
+        const getUsers = async () => {
+          const URL = 'http://localhost/Php_login/Php_login.php';
+          try {
+            const response = await fetch(URL);
+            if (!response.ok) {
+              throw new Error('The connection with the db failed somehow');
+            }
+            const data = await response.json();
 
+            createUsersCard(data);
+            return data;
+          } catch (error) {
+            console.error("We got this error", error);
+          }
+        };
+    
+        const createUsersCard = (data) => {
+            const addedNames = new Set(); 
+            const tcontainer = document.getElementById('tableContainer');
+        
+            tcontainer.innerHTML = '';                        
+
+            if(addedNames.size >= 5){
+                tcontainer.style.overflowY = 'auto';
+            } else {
+                tcontainer.style.overflowY = 'scroll'; // o 'hidden', dependiendo de lo que necesites
+            }
+
+            data.forEach((element) => {
+                if (element.Name && !addedNames.has(element.Name)) {
+
+                    const tcard = document.createElement('tr');
+                    // tcard.classList.add('UsersCard');
+                    
+                    const th3 = document.createElement('td');
+                    th3.textContent = element.Name ; 
+
+                    const tp = document.createElement('td');
+                    tp.innerHTML = element.IP
+                    
+                    tcontainer.appendChild(tcard);
+                    tcard.appendChild(th3);
+                    tcard.appendChild(tp);
+                            
+                    addedNames.add(element.Name); 
+                }
+            });
+        }
+               
+        getUsers();        
         TryDBConnection();
+        console.log(localStorage.getItem('currentUser'));
     })
+
 
 
   return (
@@ -72,6 +129,9 @@ const DashboardMenu = () => {
             <div className='titleContainer'>
                 <p>Primary</p>
                 <h2>Dashboard</h2>
+            </div>
+            <div className='WelcomeBack'>
+                <h1>Welcome Back {localStorage.getItem("currentUser")}!</h1>
             </div>
         </div>
         <div className='TodayData'>
@@ -99,48 +159,29 @@ const DashboardMenu = () => {
 
         <div className='UsersConnectedContainer'>
         <h4>Users connected </h4>
-            <div className='UCSubContainer'>
-                <div className='UsersCard'>
-                    <h3>Pablo</h3>
-                    <p>048383829</p>
-                </div>
+            <div className='UCSubContainer' id='UCSubContainer'>
+
             </div>
         </div>
-    </div>
-
-    <div className='SecondaryData'>
-        <div className='UsersTable'>
+        </div>
+        <div className='SecondaryData'>
+            <div className='UsersTable'>
             
-            <table class="employee-table">
+                <table class="employee-table">
                 <thead>
                     <tr>
                     <th>Employees <span class="icon">👤</span></th>
                     <th>Last Connexion <span class="icon">⏰</span></th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                    <td>John Doe</td>
-                    <td>...</td>
-                    </tr>
-                    <tr>
-                    <td>Sponge Bob</td>
-                    <td>...</td>
-                    </tr>
-                    <tr>
-                    <td>Pablo</td>
-                    <td>...</td>
-                    </tr>
-                    <tr>
-                    <td>John Doe</td>
-                    <td>...</td>
-                    </tr>
-                    <tr>
-                    <td>Andres</td>
-                    <td>...</td>
-                    </tr>
+                <tbody id='tableContainer'>
                 </tbody>
                 </table>
+                <div className='SecondaryDataButtons'>
+                    <a href="" onClick={goToManage} className='SDButtons'><h2>Update data </h2><img src={icon1} alt="" /></a>
+                    <a href="" className='SDButtons'><h2>Manage & view Data </h2></a>
+                </div>
+
             </div>
         </div>
     </div>

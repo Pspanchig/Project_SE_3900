@@ -51,6 +51,9 @@ const FormsLogin = () => {
         span.style.display = "block"; 
       } else{
         span.style.display = "none";
+        
+        localStorage.setItem('currentUser', userName)
+        
         goToDashboard();
         console.log('Acces  granted!');  
         localStorage.setItem('Logged', true);

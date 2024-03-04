@@ -13,13 +13,16 @@
     background-color: white;
     display: flex;
     flex-direction: row;
-    width: 99%;
     align-items: center;
+    /* justify-content: center; */
     margin: 0;
 }
+
 .titleContainer{
     margin-left: 1em;
-
+}
+.WelcomeBack{
+    margin-left: 50vh;
 }
 .DashBoardTitle h2,.DashBoardTitle p{    
     margin: 0;
@@ -32,7 +35,6 @@
     background-color: white;
     display: flex;
     flex-direction: row;
-    width: 99%;
     justify-content: space-around;
 }
 .UsersConnectedContainer{
@@ -48,7 +50,10 @@
     width: 100%;
     border-radius: 1em;
     display: flex;
-    align-items: center;    
+    align-items: center;   
+    overflow-x: auto;
+    overflow-y: hidden;
+     
 }
 .UsersCard{
     background-color: white;
@@ -59,9 +64,11 @@
     padding: 2em;
     width: 10vh;
     max-width: 10vh;
-    max-height: 8vh;
-    text-align: center;
+    max-height: 8vh;    
     border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .UsersCard p{
     margin-top: 0;
@@ -101,17 +108,20 @@
     border-radius: 0.65em;
     background-color: white;
     display: flex;
-    flex-direction: column;
-    width: 99%;
+    flex-direction: row;
+
 }
+
+
 .UsersTable{
- display: flex;
- }
- .employee-table {
+    display: flex;
+}
+.employee-table {
     width: 60vh;
     /* max-width: 600px; */
     margin: 2em;
-    border-collapse: collapse;    
+    border-collapse: collapse;  
+
   }
   .UsersTable:first-child{
     margin-right: auto;
@@ -123,15 +133,50 @@
   .employee-table thead tr th {
     padding: 10px;
     font-size: 16px;
+
+    
   }
   .employee-table tbody tr td {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #dddddd;
+    text-align: center;
+
   }
   .employee-table tbody tr:nth-child(odd) {
     background-color: #F2F2F2;
+
   }
   .employee-table .icon {
     margin-right: 5px;
 }
+.SecondaryDataButtons{
+    /* background-color: aqua; */
+    margin-left: 30vh;
+    width: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;   
+ }
+ .SecondaryDataButtons:first-child{
+    margin-right: auto;
+ }
+ .SDButtons{
+    border-radius: 1em;
+    background-color: #6A5ACD;
+    width: fit-content;
+    padding: 1em;
+    height: 10vh;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin: 4em; */
+    overflow-x: auto; 
+
+ }
+ .SDButtons img{
+    width: 2em;
+    margin-left: 1em;
+ }
