@@ -69,8 +69,10 @@ const DashboardMenu = () => {
   return (
     <div className='dashboard-menu'>
         <div className='DashBoardTitle'>
-            <p>Primary</p>
-            <h2>Dashboard</h2>
+            <div className='titleContainer'>
+                <p>Primary</p>
+                <h2>Dashboard</h2>
+            </div>
         </div>
         <div className='TodayData'>
             <div className='DBDataCard-Container' id='DBC-Container'>

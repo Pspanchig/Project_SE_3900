@@ -1,6 +1,9 @@
 .dashboard-menu{
     margin: 3em;
-    margin-top: 3em;            
+    margin-top: 3em;      
+    width: 100%; 
+    max-width: 100%;
+    overflow-x: auto;     
 }
 
 .DashBoardTitle{    
@@ -9,10 +12,14 @@
     border-radius: 0.65em;
     background-color: white;
     display: flex;
-    flex-direction: column;
-    width: 90dvw;
-    /* align-items: start; */
+    flex-direction: row;
+    width: 99%;
+    align-items: center;
     margin: 0;
+}
+.titleContainer{
+    margin-left: 1em;
+
 }
 .DashBoardTitle h2,.DashBoardTitle p{    
     margin: 0;
@@ -25,7 +32,7 @@
     background-color: white;
     display: flex;
     flex-direction: row;
-    width: 90dvw;
+    width: 99%;
     justify-content: space-around;
 }
 .UsersConnectedContainer{
@@ -46,6 +53,9 @@
 .UsersCard{
     background-color: white;
     margin: 3em;
+    margin-left: 1em;
+    margin-right: 1em;
+
     padding: 2em;
     width: 10vh;
     max-width: 10vh;
@@ -92,14 +102,14 @@
     background-color: white;
     display: flex;
     flex-direction: column;
-    width: 90dvw;
+    width: 99%;
 }
 .UsersTable{
  display: flex;
  }
  .employee-table {
     width: 60vh;
-    max-width: 600px;
+    /* max-width: 600px; */
     margin: 2em;
     border-collapse: collapse;    
   }
