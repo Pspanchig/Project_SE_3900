@@ -115,10 +115,10 @@
 
 .UsersTable{
     display: flex;
+    overflow-y: auto;    
 }
 .employee-table {
     width: 60vh;
-    /* max-width: 600px; */
     margin: 2em;
     border-collapse: collapse;  
 

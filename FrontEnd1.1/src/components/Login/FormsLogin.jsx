@@ -21,7 +21,7 @@ const FormsLogin = () => {
 
     let users = [];
     const getUsers = async () => {
-      const URL = 'http://localhost/Php_login/Php_login.php';
+      const URL = 'http://localhost:8080/GetAllUsers';
       try {
         const response = await fetch(URL);
         if (!response.ok) {
@@ -41,7 +41,7 @@ const FormsLogin = () => {
       const  userName = document.getElementById('Username').value;
       const  Passw = document.getElementById('Passw').value;
       const  span = document.getElementById('WrongUser');
-      const user = users.filter(item => item.Name === userName && item.Password === Passw);
+      const user = users.filter(item => item.username === userName && item.password === Passw);
       
       if(user.length === 0){
         console.log('That user does not exits')         

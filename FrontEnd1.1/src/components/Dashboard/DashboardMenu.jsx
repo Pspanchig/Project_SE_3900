@@ -12,7 +12,7 @@ const DashboardMenu = () => {
     }
     useEffect(()=>{
         const bringIP_DB = async () => {
-            const url = "http://localhost:8080/findAll";
+            const url = "http://localhost:8080/GetAllIPs";
             try {
                 const response = await fetch(url);
                 if (!response.ok) {
@@ -28,7 +28,7 @@ const DashboardMenu = () => {
         };
 
         const BringUsers_DB = async() =>{
-            const URL = 'http://localhost/Php_login/Php_login.php';
+            const URL = 'http://localhost:8080/GetAllUsers';
             try {
               const response = await fetch(URL);
               if (!response.ok) {
@@ -68,7 +68,7 @@ const DashboardMenu = () => {
         };      
                 
         const getUsers = async () => {
-          const URL = 'http://localhost/Php_login/Php_login.php';
+          const URL = 'http://localhost:8080/GetAllUsers';
           try {
             const response = await fetch(URL);
             if (!response.ok) {
@@ -96,22 +96,21 @@ const DashboardMenu = () => {
             }
 
             data.forEach((element) => {
-                if (element.Name && !addedNames.has(element.Name)) {
+                if (element.username && !addedNames.has(element.username)) {
 
                     const tcard = document.createElement('tr');
-                    // tcard.classList.add('UsersCard');
                     
                     const th3 = document.createElement('td');
-                    th3.textContent = element.Name ; 
+                    th3.textContent = element.username ; 
 
                     const tp = document.createElement('td');
-                    tp.innerHTML = element.IP
+                    tp.innerHTML = element.user_IP
                     
                     tcontainer.appendChild(tcard);
                     tcard.appendChild(th3);
                     tcard.appendChild(tp);
                             
-                    addedNames.add(element.Name); 
+                    addedNames.add(element.username); 
                 }
             });
         }
@@ -165,13 +164,12 @@ const DashboardMenu = () => {
         </div>
         </div>
         <div className='SecondaryData'>
-            <div className='UsersTable'>
-            
-                <table class="employee-table">
+            <div className='UsersTable'>            
+                <table className="employee-table">
                 <thead>
                     <tr>
-                    <th>Employees <span class="icon">👤</span></th>
-                    <th>Last Connexion <span class="icon">⏰</span></th>
+                    <th>Employees <span className="icon">👤</span></th>
+                    <th>Last Connexion <span className="icon">⏰</span></th>
                     </tr>
                 </thead>
                 <tbody id='tableContainer'>

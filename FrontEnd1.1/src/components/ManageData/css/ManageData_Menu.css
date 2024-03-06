@@ -21,12 +21,15 @@
  }
 
 .SortData{
+    
     background-color: white;
     height: 30vh;
     width: 90vh;
     padding: 0.5em;
     border-radius: 0.65em;    margin-top: 3em;
-
+ }
+ .SortData h4{
+    margin-left: 2em;
  }
 
 .DataInformation{
@@ -50,3 +53,111 @@
     justify-content: center;
     width: 100vh;
 }
+
+.sortDataContainer{
+    height: 20vh;
+    background-color: #AAAAAA;
+    margin: 2em;
+    margin-top: 0em;
+    border-radius: 0.65em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+ }
+ .findSort{
+    margin-left: 1em;
+    margin-right: 3em;
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ }
+.DataContainerr{
+    margin: 1em;
+ }
+ .IPSelecteted{    
+    height: 6.5vh;
+    background-color: #F2F2F2;
+    border-radius: 0.65em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;    
+ }
+ .IPSelectedBox{
+    background-color: white;
+    width: 30vh;
+    height: 3vh;
+    border: 1px  solid black;
+    border-radius: 0.65em;
+    margin-right: 4vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+ .IPSelecteted h2{
+    margin-left: 4vh;
+ }
+ .IP_Information_Title{
+    margin-top: 1.5em;
+    width: 40vh;
+    height: 4vh;
+    color: white;
+    border-top-left-radius: 0.65em;
+    border-top-right-radius: 0.65em;
+    background-color: #7163BA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+ .IP_Information{
+    background-color: #F2F2F2;
+    display: flex;
+    height: 18vh;
+    width: 40vh;
+    border-bottom-left-radius: 0.65em;
+    border-bottom-right-radius: 0.65em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ }
+ .IP_Data{
+    border-radius: 0.65em;
+    margin: 0.5em;
+    height: 4vh;
+    width: 35vh;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ }
+ .IP_Data p{
+    margin-left: 1em;
+    margin-right: 1em;
+ }
+
+.divideIP-Information{
+    display: flex;    
+    justify-content: space-between;
+}
+.IP-Options{
+    margin-top: 1em;
+    width: 40vh;
+    height: 23vh;
+    color: white;
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+ }
+ .OptionIP{
+    background-color: #7163BA;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.65em;
+ }
+ .IP-Options a{
+    color: white;
+    text-decoration: none;
+ }

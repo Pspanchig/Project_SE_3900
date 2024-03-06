@@ -8,7 +8,6 @@ const FormNewAccount = () => {
     const goToLogin = () => {
         navigate('/login');
     }
-
     const goToMenu = () => {
         navigate('/');
     }
@@ -38,24 +37,31 @@ const FormNewAccount = () => {
             return data.ip;
         };                
 
-        const sendPHP = async () => {
+        const sendInfo = async () => {
             const name = document.getElementById("name").value;
             const password = document.getElementById("Password").value;
-            const adminValue = document.getElementById('selector').value;            
-
-            const formData = new FormData();
-            formData.append('Name', name);
-            formData.append('Password', password);
-            formData.append('Is_admin', adminValue);
-            formData.append('IP', await getIP());
+            const adminValue = document.getElementById('selector').value;
+            const userIP = await getIP(); 
+            const date = new Date().toISOString();
         
-            const url = "http://localhost/Php_login/Php_register.php";
+            let formData = {
+                username: name,
+                password: password,
+                user_IP: userIP, 
+                is_admin: adminValue,
+                connection: date
+            };
+        
+            const url = "http://localhost:8080/PostUser";
             const response = await fetch(url, {
                 method: 'POST',
-                body: formData 
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData) 
             });
         
-            const responseData = await response.text(); // o .json(), dependiendo de lo que retorne tu PHP
+            const responseData = await response.text(); 
             console.log(responseData);
         };
 
@@ -71,7 +77,8 @@ const FormNewAccount = () => {
             {
                 span.style.display='none';
                 console.log("php sent!")
-                sendPHP();
+                sendInfo();
+                alert("Check info")
                 goToLogin();
                 
             } else{
@@ -89,7 +96,7 @@ const FormNewAccount = () => {
   return (
     <div className='loginForm'>
         <h1>Create Account</h1>
-        <form action="http://localhost/Php_login/Php_login.php" method="post">   
+        <form action="#" method="post">   
 
         <span className='PasswordWrong' id='DontMacth'>Password does not mactch</span>
         <span className='PasswordWrong' id='PassEmpty'>Type a password</span>
