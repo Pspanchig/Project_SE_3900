@@ -45,7 +45,9 @@
     height: 80vh;
     width: 70vh;
     padding: 0.5em;
-    border-radius: 0.65em;    margin-top: 3em;
+    border-radius: 0.65em;   
+    margin-top: 3em;
+    overflow-y: auto;
 }
 
 .right-container{
@@ -71,6 +73,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
+ }
+ .findSort input{
+   border-radius: 1em;
+   border: none;
+   height: 2.2vh;
+   width: 25vh;
+   padding: 0.4em;
  }
 .DataContainerr{
     margin: 1em;
@@ -156,8 +166,52 @@
     justify-content: center;
     align-items: center;
     border-radius: 0.65em;
+    cursor: pointer;
  }
  .IP-Options a{
     color: white;
     text-decoration: none;
+ }
+
+.IPList{
+   padding: 0;
+ }
+ .IPList_Title{
+   background-color: #7163BA;
+   height: 5vh;
+   margin: 0;
+   border-top-left-radius: 0.65em;
+   border-top-right-radius: 0.65em;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-bottom: 2em;
+ }
+ .IPList_Title select{
+   border: none;
+   height: 3vh;
+   width: 17vh;
+   background-color: rgba(255, 255, 255, 0.364);
+   color: white;
+   border-radius: 0.65em;
+   text-align: center;   
+ }
+ .IPList_Title option{
+   color: black;
+ }
+ .IPMainList{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+ }
+ .IPListItem{
+   height: 4vh;   
+   width: 70vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   cursor: pointer;
+ }
+ .IPListItem:nth-child(odd){
+   background-color: #F2F2F2;
  }

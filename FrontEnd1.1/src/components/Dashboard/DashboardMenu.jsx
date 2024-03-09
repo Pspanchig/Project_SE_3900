@@ -10,6 +10,9 @@ const DashboardMenu = () => {
     const goToManage = () =>{
         navigate("/dashboard/manage");
     }
+    const goToModify = () =>{
+        navigate("/dashboard/modify");
+    }
     useEffect(()=>{
         const bringIP_DB = async () => {
             const url = "http://localhost:8080/GetAllIPs";
@@ -104,7 +107,7 @@ const DashboardMenu = () => {
                     th3.textContent = element.username ; 
 
                     const tp = document.createElement('td');
-                    tp.innerHTML = element.user_IP
+                    tp.innerHTML = element.connection.substring(0,10)
                     
                     tcontainer.appendChild(tcard);
                     tcard.appendChild(th3);
@@ -114,10 +117,10 @@ const DashboardMenu = () => {
                 }
             });
         }
-               
+         
         getUsers();        
         TryDBConnection();
-        console.log(localStorage.getItem('currentUser'));
+        //console.log(localStorage.getItem('currentUser'));
     })
 
 
@@ -176,8 +179,8 @@ const DashboardMenu = () => {
                 </tbody>
                 </table>
                 <div className='SecondaryDataButtons'>
-                    <a href="" onClick={goToManage} className='SDButtons'><h2>Update data </h2><img src={icon1} alt="" /></a>
-                    <a href="" className='SDButtons'><h2>Manage & view Data </h2></a>
+                    <a href="" onClick={goToModify} className='SDButtons'><h2>Update data </h2><img src={icon1} alt="" /></a>
+                    <a href="" onClick={goToManage} className='SDButtons'><h2>Manage & view Data </h2></a>
                 </div>
 
             </div>

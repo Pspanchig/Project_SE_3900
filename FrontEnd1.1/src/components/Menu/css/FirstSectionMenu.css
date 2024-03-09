@@ -54,10 +54,15 @@
     border: none;
     background-color: var(--Buttons-Color);
     color: white;
-    text-shadow: 1px 2px 5px black;
+    /* text-shadow: 1px 2px 5px black; */
 }
 .NavLog_Reg a, button{
     margin: 1em;
+    
+}
+.NavLog_Reg a{
+    color: black;
+    text-decoration: none;
 }
 #MainTitleText{
     margin-top: 0;

@@ -1,0 +1,206 @@
+.ModifyDataPage{
+    margin: 3em;
+    margin-top: 3em;      
+    width: 100%; 
+    max-width: 100%;
+    overflow-x: auto;     
+    
+}
+
+.MoDTitle{
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    /* width: 90vh; */
+    padding: 0.5em;
+    border-radius: 0.65em;
+    background-color: white;
+ }
+ .MoDTitle h1{
+   margin-left: 1em;
+}
+
+.ModifyDataPage section{
+    margin-top: 2.5em;
+    height: 30vh;
+    display: flex;
+    justify-content: space-between;
+    /* background-color: red; */
+}
+   .RemovIPDiv{
+      background-color: white;
+      border-radius: .65em;    
+      height: 100%;
+      width: 50vh;
+   }
+   .RemovIPDiv div{
+      margin: 1em;
+      display: flex;
+      flex-direction: column;  
+   }
+   .RemovIPDiv div h2{
+      margin: 1em;
+      margin-top: 0
+   }
+   .RemovIPDiv div div{
+      display: flex;
+      flex-direction: column;  
+      align-items: center;      
+   }
+   .RemovIPDiv div div select{
+      margin-top: 2em;
+      width: 100%;
+      background-color: white;
+      border: 1px solid black;
+      border-radius: 0.65em;
+      height: 3vh;
+   }
+   .RemovIPDiv div div button{
+      margin-top: 7vh;
+      border: none;
+      height: 4vh;
+      /* border-radius: 0.65em; */
+      background-color: #7163BA;
+      color: white;
+      font-weight: bold;
+      width: 100%;
+      cursor:pointer;
+      display: flex;
+      align-items: center;
+      border-radius: 0.65em;
+
+   }
+
+   .AddIPDiv{
+      background-color: white;
+      border-radius: .65em;    
+      height: 100%;
+      width: 130vh;
+   }
+   .AddIPDiv-Container{
+      margin: 1em;
+      display: flex;
+      flex-direction: column;       
+   }
+   .AddIPDiv div h2{
+      margin: 1em;
+      margin-top: 0;
+      margin-bottom: 1vh;      
+   }
+   .InputGroup-Item{      
+      display: flex;
+      justify-content: space-between;
+      /* background-color: red;     */
+      width: 100%;      
+      margin-top: 1em;
+   }
+   .SubInput{
+      margin: 6vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+   }
+   .InputGroup{
+      margin-top: 0;
+      height: 15vh;
+      background-color: #D7D7D7;
+      border-radius: 0.65em;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      margin-bottom: 1vh;            
+   }
+   .InputGroup-Item input{
+      border: none;
+      height: 2vh;
+      padding: 0.5em;
+      width: 35vh;
+      border-radius: 1em;
+   }
+   .AddIPDivButtonDiv{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* background-color: red; */
+   }
+   .AddIPDiv button{
+      margin-top: 1vh;
+      border: none;
+      height: 4vh;
+      width: 40vh;
+      background-color: #7163BA;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 0.65em;
+}
+   
+.GoToExportInfo{
+   margin-top: 0;
+   color: #AAAAAA;
+ }
+ #GO{
+   margin:4vh;
+   background-color: #026E0D;
+   display: flex;
+   justify-content: center;
+ }
+#Exportb{
+   margin-bottom: 0;
+}
+   
+.MoDSubTitle{
+    margin-top: 2em;
+    height: 4vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: 90vh; */
+    padding: 0.5em;
+    border-radius: 0.65em;
+    background-color: white;
+    margin-bottom: 1em;
+}
+
+.ModContainer{
+   /* background-color: #026E0D; */
+   height: 23.3vh;
+   margin: 2em;
+   margin-bottom: 2em;
+   display: flex;   
+   align-items: center;
+   justify-content: space-around;
+ }
+ .ModContainer select{
+   width: 40vh;      
+ }
+ .ModifyOptions{   
+   background-color: white;
+   height: 90%;
+   width: 50vh;
+   border: 1em solid #D7D7D7;
+   border-radius: .65em;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+ }
+ .ModifyOptions-Item{
+   display: flex;
+   margin: 1em;
+   justify-content: space-between;
+ }
+ .ModifyOptions-Item input{
+   height: 4vh;
+   border-radius: 1em;
+   border: 1px black solid;
+   width: 25vh;
+ }
+ .SelectorOptions{
+   height: 90%;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+ }
+ #change{
+   margin: 0;
+ }

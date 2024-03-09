@@ -22,7 +22,7 @@ const FirstSectionMenu = () => {
         <h1>IP web Tracking</h1>                
         <div className='NavButtons'>
           <ul>
-            <a onClick={goToDashboard} href="">
+            <a  href="" onClick={goToDashboard}>
               <li>
                 Home
               </li>
@@ -40,7 +40,7 @@ const FirstSectionMenu = () => {
           </ul>
         </div>
         <div className='NavLog_Reg'>          
-        <a onClick={goToLogin}>Login</a>          
+        <a href=""onClick={goToLogin}>Login</a>          
           <button onClick={goToRegister} id='RegisterBM'>Register</button>
         </div>
       </nav>

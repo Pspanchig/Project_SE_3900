@@ -42,7 +42,8 @@ const FormNewAccount = () => {
             const password = document.getElementById("Password").value;
             const adminValue = document.getElementById('selector').value;
             const userIP = await getIP(); 
-            const date = new Date().toISOString();
+            const date = new Date('2014-03-05')
+
         
             let formData = {
                 username: name,
@@ -78,7 +79,6 @@ const FormNewAccount = () => {
                 span.style.display='none';
                 console.log("php sent!")
                 sendInfo();
-                alert("Check info")
                 goToLogin();
                 
             } else{
