@@ -17,6 +17,23 @@ const FormsLogin = () => {
     navigate('/dashboard')
   }
 
+  const sendOnlineUser = async () =>{
+    const url = 'http://localhost:8080/OnlinePost'
+    const user = localStorage.getItem("currentUser")
+    const data ={
+      username: user
+    }
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data) 
+    });
+
+    if(!response.status.ok) throw console.error('There was an error sending a new online user'); 
+  }
+
   useEffect(() => {
 
     let users = [];
@@ -53,7 +70,7 @@ const FormsLogin = () => {
         span.style.display = "none";
         
         localStorage.setItem('currentUser', userName)
-        
+        sendOnlineUser();
         goToDashboard();
         console.log('Acces  granted!');  
         localStorage.setItem('Logged', true);

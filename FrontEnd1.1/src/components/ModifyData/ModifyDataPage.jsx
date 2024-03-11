@@ -27,7 +27,6 @@ const ModifyDataPage = () => {
     const addedIPs = new Set(data.map(element => element.ip));
     setRemoveIP([...addedIPs]);       
   };   
-
   const submitNewIP = async() =>{
     const ipInput = document.getElementById('ip-input').value;
     const serverInput = document.getElementById('server-input').value
@@ -71,7 +70,6 @@ const ModifyDataPage = () => {
 
     })
   }
-
   useEffect(() =>{  
     placeIPs()  
   })
@@ -132,7 +130,16 @@ const ModifyDataPage = () => {
         <div className='AddIPDiv'>
           <div className='ModContainer'>
             <div className='SelectorOptions'>
-              <select name="" id=""></select>
+              <select name="" id="">
+              <option value="null">no IP selected</option>
+                  {
+                    removeIP.map((IP, index) => (
+                      <option key={index} value={IP} onClick={() => removeFromList(IP)}>
+                      {IP}
+                      </option>
+                   ))
+                  }
+              </select>
               <button id='change'>Change</button>
             </div>
             <div className='ModifyOptions'>

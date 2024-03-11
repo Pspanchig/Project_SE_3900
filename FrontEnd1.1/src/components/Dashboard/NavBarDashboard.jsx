@@ -10,7 +10,14 @@ import db from  '../../assets/dbItem.svg'
 import exit from '../../assets/goBackItem.svg'
 const NavBarDashboard = () => {
 
+  const removeOnlineUser = async () =>{
+    const user = localStorage.getItem("currentUser")
+    const url = 'http://localhost:8080/deleteByUsername/' + user;
+    await fetch(url,{method: 'DELETE'})
+  }
+
   const logOut = (e) => {
+    removeOnlineUser();
     localStorage.setItem('Logged', false)
     console.log(localStorage.getItem( "logged" ));
   };

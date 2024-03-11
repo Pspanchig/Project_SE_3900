@@ -64,14 +64,17 @@
     padding: 2em;
     width: 10vh;
     max-width: 10vh;
+    height: 8vh;
     max-height: 8vh;    
     border-radius: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 .UsersCard p{
-    margin-top: 0;
+    font-size: 2em;
+    /* margin-top: 0; */
 }
 .SubContainer-DBCards{
     display: flex;
