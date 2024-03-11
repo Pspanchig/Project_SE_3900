@@ -34,14 +34,14 @@
  .ExportDiv{
     border-radius: 0.65em;
     height: 50vh;
-    width: 100vh;
+    /* width: 100vh; */
     background-color: white;
     margin-top: 3em;
  }
  .leftEx{    
     /* background-color: red; */
     height: 50vh;
-    width: 100vh;
+    width: 80vh;
     justify-content: center;
     display: flex;
     flex-direction: column;

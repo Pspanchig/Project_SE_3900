@@ -110,4 +110,9 @@
     display: flex;
     align-items: center;
     text-decoration: none;
+    cursor: pointer;
 }
+#aHolder button{
+    width: 15vh;
+}
+
