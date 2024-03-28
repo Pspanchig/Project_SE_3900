@@ -19,7 +19,7 @@ const FirstSectionMenu = () => {
   return (
     <section className='menuSection1'>
       <nav className='MenuTitle'>
-        <h1>IP web Tracking</h1>                
+        <h1>Commercial Bank IP Page</h1>                
         <div className='NavButtons'>
           <ul>
             <a  href="" onClick={goToDashboard}>
@@ -52,8 +52,8 @@ const FirstSectionMenu = () => {
       </div>
 
       <div className="content1">
-        <h1 id='MainTitleText'>Engineering most proffesional IP Tracker</h1>
-        <h3>Empowering companies with innovative solutions</h3>
+        <h1 id='MainTitleText'>Engineering Commercial Bank IP Page</h1>
+        <h3>Your Gateway to Commercial Bank Intellectual Property</h3>
 
         <div className='StartButtons'>
             <button onClick={goToLogin} id='getStarted'>Get Started!</button>

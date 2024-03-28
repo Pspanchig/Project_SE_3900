@@ -16,28 +16,28 @@ const SecondSectionMenu = () => {
           <img src={cube} alt="cube" />
           <div>
             <h1>React + Vite </h1>
-            <p>We use sql</p>
+            <p>The dynamic duo for ultra-fast web development. React crafts your UI with precision, while Vite supercharges your build speed. Together, they're your ticket to cutting-edge web projects.</p>
           </div>
         </div>
         <div className='FeaturesBox'>          
           <img src={cube} alt="cube" />
           <div>
             <h1>MySQL</h1>
-            <p>We use sql</p>
+            <p>Your go-to for efficient, scalable data management. Perfect for web development, it's the fast, reliable database solution you need.</p>
           </div>
         </div>
         <div className='FeaturesBox'>          
           <img src={cube} alt="cube" />
           <div>
             <h1>Java</h1>
-            <p>We use sql</p>
+            <p>Powerhouse programming language designed to supercharge your application development across any platform. Versatile, robust, and universally compatible</p>
           </div>
         </div>
         <div className='FeaturesBox'>          
           <img src={cube} alt="cube" />
           <div>
             <h1>Spring boot</h1>
-            <p>We use sql</p>
+            <p>The game-changer for effortless, rapid application development. Dive into seamless, scalable backend solutions with minimal configuration. Your fast track to enterprise-grade applications.</p>
           </div>
         </div>
         

@@ -17,6 +17,7 @@
     padding: 0.5em;
     border-radius: 1em;
     text-align: center;
+    background-color: rgb(225, 225, 225);
 }
 .PasswordWrong{
     display: none;
@@ -26,4 +27,15 @@
     border-radius: 3em;
     margin-bottom: 2vh;
     text-align: center;
+}
+#writeCode{
+    margin-top: 1em;
+    margin-bottom: 0.3em;
+}
+#adminCodeInput{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+#selector option{
+    background-color: white;
 }

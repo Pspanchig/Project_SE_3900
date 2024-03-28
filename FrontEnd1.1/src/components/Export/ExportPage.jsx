@@ -43,9 +43,24 @@ const ExportPage = () => {
   };
   const changeToAllData = () =>{
     setUrl('http://localhost:8080/GetAllIPs');
+    const item1 = document.getElementById('changeToAllData');
+    const item2 = document.getElementById('changeToWhiteList');
+
+    item1.style.backgroundColor = 'gray'
+    item2.style.backgroundColor = 'white'
+    item1.style.color = 'white'
+    item2.style.color = 'black'
   }
   const changeToWhiteList = () =>{
     setUrl('http://localhost:8080/GetWhiteList');
+
+    const item1 = document.getElementById('changeToAllData');
+    const item2 = document.getElementById('changeToWhiteList');
+
+    item2.style.backgroundColor = 'gray'
+    item1.style.backgroundColor = 'white'
+    item2.style.color = 'white'
+    item1.style.color = 'black'
   }
   const displaySpan = () =>{
     const span = document.getElementById('span-export');
@@ -71,8 +86,8 @@ const ExportPage = () => {
                   <div className='selecDataTitle'>
                     Select data to export
                   </div>
-                    <button onClick={changeToAllData}>Export All IPs and data</button>
-                    <button onClick={changeToWhiteList}>Export white listed IPs and data</button>
+                    <button onClick={changeToAllData} id='changeToAllData'>Export All IPs and data</button>
+                    <button onClick={changeToWhiteList} id='changeToWhiteList'>Export white listed IPs and data</button>
                 </div>
                 <div className='leftEx'>
                     <span className='span-export' style={{display: "none"}} id='span-export'>Please select an export option</span>

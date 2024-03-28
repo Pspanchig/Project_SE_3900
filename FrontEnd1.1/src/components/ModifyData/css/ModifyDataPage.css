@@ -1,20 +1,20 @@
 .ModifyDataPage{
-    margin: 3em;
-    margin-top: 3em;      
-    width: 100%; 
-    max-width: 100%;
-    overflow-x: auto;     
-    
+   margin: 3em;
+   margin-top: 3em;      
+   width: 100%; 
+   max-width: 100%;
+   overflow-x: auto;         
 }
 
 .MoDTitle{
-    height: 8vh;
-    display: flex;
-    align-items: center;
-    /* width: 90vh; */
-    padding: 0.5em;
-    border-radius: 0.65em;
-    background-color: white;
+   height: 8vh;
+   display: flex;
+   
+   align-items: center;
+   /* width: 90vh; */
+   padding: 0.5em;
+   border-radius: 0.65em;
+   background-color: white;
  }
  .MoDTitle h1{
    margin-left: 1em;
@@ -80,19 +80,20 @@
    .AddIPDiv-Container{
       margin: 1em;
       display: flex;
-      flex-direction: column;       
+      flex-direction: row;       
    }
    .AddIPDiv div h2{
       margin: 1em;
+      width: 10vh;
       margin-top: 0;
       margin-bottom: 1vh;      
    }
-   .InputGroup-Item{      
+   .InputGroup-Item{     
+
       display: flex;
       justify-content: space-between;
       /* background-color: red;     */
-      width: 100%;      
-      margin-top: 1em;
+      margin: 0.5em;
    }
    .SubInput{
       margin: 6vh;
@@ -101,14 +102,15 @@
       justify-content: space-evenly;
    }
    .InputGroup{
-      margin-top: 0;
-      height: 15vh;
+      /* margin-top: 1vh; */
+      height: 25vh;
       background-color: #D7D7D7;
       border-radius: 0.65em;
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
-      margin-bottom: 1vh;            
+      justify-content: center;
+      align-content: center;
+      width: 60%;            
    }
    .InputGroup-Item input{
       border: none;
@@ -121,18 +123,20 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      margin-left: 7vh;
       /* background-color: red; */
    }
    .AddIPDiv button{
       margin-top: 1vh;
       border: none;
-      height: 4vh;
-      width: 40vh;
+      height: 10vh;
+      width: 20vh;
       background-color: #7163BA;
       color: white;
       font-weight: bold;
       cursor: pointer;
       border-radius: 0.65em;
+      
 }
    
 .GoToExportInfo{
@@ -184,6 +188,17 @@
    flex-direction: column;
    justify-content: center;
  }
+ #InGroup{
+   margin-top: 0;
+ }
+ #SelectorModify{
+   margin-top: 2em;
+   /* width: 100%; */
+   background-color: white;
+   border: 1px solid black;
+   border-radius: 0.65em;
+   height: 3vh;
+ }
  .ModifyOptions-Item{
    display: flex;
    margin: 1em;
@@ -203,4 +218,56 @@
  }
  #change{
    margin: 0;
+   width: 100%;
  }
+
+ #fakePage{
+   filter:blur(1.17rem)
+ }
+ #application-id-modify{
+   width: 36.3vh;
+ }
+
+ .SpanUser{
+   text-align: center;
+   padding: 0.5em;
+   height: 30vh;
+   width: 50vh;
+   background-color: white;
+   position: absolute;
+   left: 80vh;
+   top: 30vh;
+   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+   filter: blur(0em);
+}
+
+.application_info_CLASS{
+   background-color: white;
+   border: none;
+   border-radius: 1em;
+   width: 57%;
+   padding: 0.3em;
+}
+.changeItem1{
+   background-color: white;
+   border-radius: .65em;    
+   height: 100%;
+   width: 50vh;
+   display: none;
+}
+.DisplayInfo-changeItem1{
+   margin: 1em;
+}
+.DI-Item{
+   margin-top: .7em;
+   display: flex;
+   height: 3vh;
+   align-items: center;
+   justify-content: space-between;
+   background-color: rgb(26, 161, 179);
+   border-radius: 1em;
+   padding: 0.1em;
+   padding-left: .5em;
+   padding-right: 3em;
+   color: white;
+}

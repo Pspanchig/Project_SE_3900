@@ -23,21 +23,24 @@
 .SortData{
     
     background-color: white;
-    height: 30vh;
+    height: 27vh;
     width: 90vh;
     padding: 0.5em;
-    border-radius: 0.65em;    margin-top: 3em;
+    border-radius: 0.65em;    
+    margin-top: 2em;
  }
  .SortData h4{
+   margin: 0.75em;
     margin-left: 2em;
  }
 
 .DataInformation{
     background-color: white;
-    height: 35vh;
+    height: 42vh;
     width: 90vh;
     padding: 0.5em;
-    border-radius: 0.65em;    margin-top: 3em;
+    border-radius: 0.65em;    
+    margin-top: 2em;
  }
 
 .IPList{
@@ -107,7 +110,7 @@
  .IPSelecteted h2{
     margin-left: 4vh;
  }
- .IP_Information_Title{
+ .IP_Information_Title{   
     margin-top: 1.5em;
     width: 40vh;
     height: 4vh;
@@ -120,15 +123,17 @@
     align-items: center;
  }
  .IP_Information{
+   overflow-y: auto;
     background-color: #F2F2F2;
     display: flex;
-    height: 18vh;
+    height: 25vh;
     width: 40vh;
     border-bottom-left-radius: 0.65em;
     border-bottom-right-radius: 0.65em;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
  }
  .IP_Data{
     border-radius: 0.65em;
@@ -152,7 +157,7 @@
 .IP-Options{
     margin-top: 1em;
     width: 40vh;
-    height: 23vh;
+    height: 30vh;
     color: white;
     /* background-color: aqua; */
     display: flex;

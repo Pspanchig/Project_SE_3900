@@ -46,3 +46,6 @@
     color: rgb(207, 95, 255);
     transition: 0.5s;
 }
+#AdminPage{
+    display: none;
+}

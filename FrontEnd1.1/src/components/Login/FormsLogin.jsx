@@ -31,54 +31,57 @@ const FormsLogin = () => {
       body: JSON.stringify(data) 
     });
 
-    if(!response.status.ok) throw console.error('There was an error sending a new online user'); 
+    // if(!response.status.ok) throw console.error('There was an error sending a new online user'); 
   }
 
-  useEffect(() => {
-
-    let users = [];
-    const getUsers = async () => {
-      const URL = 'http://localhost:8080/GetAllUsers';
-      try {
-        const response = await fetch(URL);
-        if (!response.ok) {
-          throw new Error('The connection with the db failed somehow');
-        }
-        const data = await response.json();
-        users = data;
-
-        return data;
-      } catch (error) {
-        console.error("We got this error", error);
+  let users = [];
+  const getUsers = async () => {
+    const URL = 'http://localhost:8080/GetAllUsers';
+    try {
+      const response = await fetch(URL);
+      if (!response.ok) {
+        throw new Error('The connection with the db failed somehow');
       }
-    };
-    
-    const isDataCorrect = () => {
-      console.log("Users: ", users);
-      const  userName = document.getElementById('Username').value;
-      const  Passw = document.getElementById('Passw').value;
-      const  span = document.getElementById('WrongUser');
-      const user = users.filter(item => item.username === userName && item.password === Passw);
-      
-      if(user.length === 0){
-        console.log('That user does not exits')         
-        setTimeout(() => {
-          span.style.display = "none";
-        }, 2000);
-        span.style.display = "block"; 
-      } else{
+      const data = await response.json();
+      users = data;
+
+      return data;
+    } catch (error) {
+      console.error("We got this error", error);
+    }
+  };
+  
+  const isDataCorrect = () => {
+    console.log("Users: ", users);
+    const  userName = document.getElementById('Username').value;
+    const  Passw = document.getElementById('Passw').value;
+    const  span = document.getElementById('WrongUser');
+    const user = users.filter(item => item.username === userName && item.password === Passw);
+    const userR = users.find(user => user.username === userName);
+
+    if(user.length === 0){
+      console.log('That user does not exits')         
+      setTimeout(() => {
         span.style.display = "none";
-        
-        localStorage.setItem('currentUser', userName)
-        sendOnlineUser();
-        goToDashboard();
-        console.log('Acces  granted!');  
-        localStorage.setItem('Logged', true);
+      }, 2000);
+      span.style.display = "block"; 
+    } else{
+      span.style.display = "none";
       
-      }
+      localStorage.setItem('currentUser', userName)
+      localStorage.setItem('privilage', JSON.stringify(userR.is_admin))
+      const priv = localStorage.getItem('privilage');        
 
-    };
+      sendOnlineUser();
+      goToDashboard();
+      console.log('Acces  granted!');  
+      localStorage.setItem('Logged', true);
+    
+    }
 
+  };
+
+  useEffect(() => {
     document.getElementById( "submitlogin" ).addEventListener('click', async function(e){
       e.preventDefault();
       await getUsers(); 
@@ -100,10 +103,6 @@ const FormsLogin = () => {
             <input type="text" placeholder='Username' id='Username'/>
             <label htmlFor="">Passowrd</label>
             <input type="Password" placeholder='Password' id='Passw'/>
-            <select name="" id="selector">
-              <option value="">Normal User</option>
-              <option value="">Administrator</option>
-            </select>
 
             <div className='formsbuttons'>
             <input type='submit' id='submitlogin'/>

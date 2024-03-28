@@ -1,0 +1,43 @@
+.AdminPage{
+    margin: 3em;
+    margin-top: 3em;      
+    width: 100%; 
+    max-width: 100%;
+    overflow-x: auto;     
+}
+.containerPrivileges{
+    margin-top: 3em;
+    height: 72vh;
+    /* background-color: red; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.DivPrivileges{
+    border-radius: .65em;
+    height: 100%;
+    width: 50vh;
+    background-color: white;
+}
+.AdminControlUser-Server{
+    /* background-color: blue; */
+    width: 50vh;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.User-ServerDivision{
+    height: 33vh;
+    width: 100%;
+    border-radius: .65em;
+    background-color: white;
+}
+.PrivTitle{
+    border-top-left-radius: 0.65em;
+    border-top-right-radius: 0.65em;
+    height: 10vh;
+    width: 100%;
+    background-color: #7163BA;
+
+}

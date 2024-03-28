@@ -14,7 +14,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    /* justify-content: center; */
+    justify-content: center;
     margin: 0;
 }
 
@@ -115,10 +115,12 @@
 
 }
 
-
+.tableContainerUsers{
+    overflow-y: auto;
+}
 .UsersTable{
     display: flex;
-    overflow-y: auto;    
+    
 }
 .employee-table {
     width: 60vh;
@@ -132,6 +134,7 @@
   .employee-table thead {
     background-color: #6A5ACD;
     color: #ffffff;
+    height: 7vh;
   }
   .employee-table thead tr th {
     padding: 10px;
@@ -183,3 +186,32 @@
     width: 2em;
     margin-left: 1em;
  }
+
+ #AdminPassCode{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.3em solid rgb(182, 181, 181);
+    padding: 0.2em;
+    width: 20vh;
+    border-radius: 2em;
+ }
+
+#tableContainer{
+    /* max-height: 20vh;
+    height: 20vh; */
+}
+
+#removeUserID {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#removeUserID p{
+    margin:0;
+    padding: 0.3em;
+    background-color: red;
+    border-radius: 1em;
+    color: white;
+    cursor: pointer;
+}

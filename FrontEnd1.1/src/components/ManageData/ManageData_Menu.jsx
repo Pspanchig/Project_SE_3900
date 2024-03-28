@@ -40,17 +40,23 @@ const ManageData_Menu = () => {
       const IP1 = document.getElementById('IP1');
       const IP2 = document.getElementById('IP2');
       const server = document.getElementById('serverID');
-      const date = document.getElementById('dateID');      
-
-      IP1.innerHTML = e;
-      IP2.innerHTML = e;
+      const date = document.getElementById('dateID');  
+      const port = document.getElementById('PORT');
+      const createdBy = document.getElementById('Created_By');
+      const modifyBy = document.getElementById('Modify_By');
       
       const data = await getIP();
       const selectedInfo = data.find(d => d.ip === e);
       setSelectedInfo(selectedInfo);
-
-      server.innerHTML =selectedInfo.server
-      date.innerHTML = selectedInfo.date.substring(0,10)         
+      console.log(selectedInfo);
+      
+      IP1.innerHTML = e;
+      port.innerHTML = selectedInfo.port;
+      IP2.innerHTML = selectedInfo.applicationID;
+      server.innerHTML =selectedInfo.server;
+      date.innerHTML = selectedInfo.date.substring(0,10)  
+      createdBy.innerHTML = selectedInfo.createdBy;
+      modifyBy.innerHTML = selectedInfo.modifyBy;       
    }      
    const addToWhiteList = async () => {
       if (selectedInfo) {
@@ -59,6 +65,10 @@ const ManageData_Menu = () => {
           date: selectedInfo.date,
           ip: selectedInfo.ip,
           server: selectedInfo.server,
+          port: selectedInfo.port,
+          applicationID: selectedInfo.applicationID,
+          createdBy: selectedInfo.createdBy,
+          modifyBy: selectedInfo.modifyBy
         };
         await fetch(url, {
           method: 'POST',
@@ -166,8 +176,20 @@ const ManageData_Menu = () => {
                            <p id='serverID'>- - -</p>
                         </div>
                         <div className='IP_Data'>
+                           <p>PORT:</p>
+                           <p id='PORT'>- - -</p>
+                        </div>
+                        <div className='IP_Data'>
                            <p>Date Modified:</p>
                            <p id='dateID'>- - -</p>
+                        </div>
+                        <div className='IP_Data'>
+                           <p>Modify By:</p>
+                           <p id='Modify_By'>- - -</p>
+                        </div>
+                        <div className='IP_Data'>
+                           <p>Created By:</p>
+                           <p id='Created_By'>- - -</p>
                         </div>
                      </div>
                   </div>
