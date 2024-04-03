@@ -157,15 +157,30 @@ const ModifyDataPage = () => {
 
   }
 
+  const CheckAdminPrivilege = () => {
 
+    const privilege = localStorage.getItem('privilage');
+    const buttons = document.querySelectorAll(".MBO");
+    
+    if (privilege === `"Admin"`) { 
+      buttons.forEach(button => {
+        button.style.display = 'block'; 
+      })
+    } else button.style.display = 'none'; 
+  }
   useEffect(() =>{  
     placeIPs()  
+    CheckAdminPrivilege();
   })
 
   return (    
     <div className='ModifyDataPage'>
         <div className='MoDTitle'>
             <h1>Modify Data</h1>
+            <div className='ModifyServerOrIP'>
+              <button className='MBO'>Modify IP</button>
+              <button className='MBO'>Modify Server</button>
+            </div>
         </div>
 
         <section>

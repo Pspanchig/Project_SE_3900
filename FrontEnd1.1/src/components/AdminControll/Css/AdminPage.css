@@ -8,16 +8,82 @@
 .containerPrivileges{
     margin-top: 3em;
     height: 72vh;
-    /* background-color: red; */
     display: flex;
+
     justify-content: space-between;
 }
+.Privileged-Container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+}
+.Privileged-Container-Selector-User{
+    margin: 2em;
+    height: 50vh;
+    width: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}   
+.Privileged-Container-Selector-User h1{
+    margin: 0;
+}
+.UsersToChoose{
+    /* background-color: rgb(214, 214, 214); */
+    border: 1px solid  black;
+    width: 100%;
+    height: 30vh;
+    border-radius: .65em;
+    overflow-y: auto;
+}
+.UsersInList{
+    background-color: rgb(140, 76, 192);
+    width: 100%;
+    height: 6vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+}
+.UsersInList:nth-child(even){
+    background-color:rgb(228, 205, 247);
+    color: black;
+}
+.UsersInList h2{
+    margin: 0;
 
+}
 .DivPrivileges{
     border-radius: .65em;
     height: 100%;
-    width: 50vh;
+    width: 70%;
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ }
+ .DivPrivileges button{
+    margin: 0;
+    background-color: rgb(46, 181, 25);
+    color: white;
+    border: none;
+    height: 4vh;
+    border-radius: 1em;
+    cursor: pointer;
+ }
+.ChangeAccesItem select{
+    background-color: white;
+    border: none;
+    height: 3vh;
+    width: 15vh;
+    border-radius: 1em;
+}
+.ChangeAccesItem label{
+    width: 40vh;
+    margin-inline-end: 5vh;
 }
 .AdminControlUser-Server{
     /* background-color: blue; */
@@ -33,11 +99,40 @@
     border-radius: .65em;
     background-color: white;
 }
+.UsersToChangeAccesContainer{
+    background-color: rgb(214, 214, 214);
+    margin: 2em;        
+    height: 80%;
+    width: 70vh;
+    padding: 0.9em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 1em;
+}
+.ChangeAccesItem{
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 .PrivTitle{
     border-top-left-radius: 0.65em;
     border-top-right-radius: 0.65em;
     height: 10vh;
     width: 100%;
     background-color: #7163BA;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.AdminSpan{
+    margin-left: 5em;
+    background-color: red;
+    padding: 1em;
+    color: white;
+    border-radius: 1em;
+    display: none;
 }

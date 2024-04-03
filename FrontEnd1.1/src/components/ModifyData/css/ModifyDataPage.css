@@ -271,3 +271,18 @@
    padding-right: 3em;
    color: white;
 }
+
+.ModifyServerOrIP{
+   margin-right: 1em;
+}
+.ModifyServerOrIP button{
+   border: none;
+   border-radius: 0.65em;
+   height: 6vh;
+   color: white;
+   background-color: #7163BA;
+   cursor: pointer;
+}
+.ModifyServerOrIP:last-child{
+   margin-left: auto;
+}

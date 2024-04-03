@@ -49,3 +49,8 @@
 #AdminPage{
     display: none;
 }
+#AdminNavImg{
+    height: 8vh;
+    
+    /* background-color: red;     */
+}
