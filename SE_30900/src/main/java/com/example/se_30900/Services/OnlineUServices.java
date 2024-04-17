@@ -23,4 +23,8 @@ public class OnlineUServices {
         return repo.findAll();
     }
 
+    @Transactional
+    public void deleteByUsername(String username) {
+        repo.deleteByUsername(username);
+    }
 }

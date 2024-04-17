@@ -12,14 +12,14 @@ public class OnlineUsers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String Username;
+    private String username;
 
     public OnlineUsers() {
     }
 
     public OnlineUsers(long id, String username) {
         this.id = id;
-        Username = username;
+        this.username = username;
     }
 
     public long getId() {
@@ -31,10 +31,10 @@ public class OnlineUsers {
     }
 
     public String getUsername() {
-        return Username;
+        return username;
     }
 
     public void setUsername(String username) {
-        Username = username;
+        this.username = username;
     }
 }

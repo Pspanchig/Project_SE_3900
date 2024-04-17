@@ -6,7 +6,8 @@ const ModifyData = () => {
   return (
     
     <div className='ModifyData'>
-        {/* <ModifyDataPage/> */}
+        <NavBarDashboard/>
+        <ModifyDataPage/>
     </div>
   )
 }

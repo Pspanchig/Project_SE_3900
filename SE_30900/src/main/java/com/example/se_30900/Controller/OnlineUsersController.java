@@ -5,10 +5,7 @@ import com.example.se_30900.Services.OnlineUServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -22,10 +19,15 @@ public class OnlineUsersController {
 
     @GetMapping("/GetAllOnline")
     public ResponseEntity<?> findOnline(){
-        return new ResponseEntity<>(services.findAllOnlineUsers(), HttpStatus.OK);
-    }
+        return new ResponseEntity<>(services.findAllOnlineUsers(), HttpStatus.OK);}
+
     @PostMapping("/OnlinePost")
-    public ResponseEntity<?> AddOnline(OnlineUsers users){
+    public ResponseEntity<?> AddOnline(@RequestBody OnlineUsers users){
         return new ResponseEntity<>(services.InsertOnlineUser(users), HttpStatus.OK);
+    }
+    @DeleteMapping("/deleteByUsername/{username}")
+    public ResponseEntity<?> deleteAllByIp(@PathVariable String username) {
+        services.deleteByUsername(username);
+        return ResponseEntity.ok().build();
     }
 }

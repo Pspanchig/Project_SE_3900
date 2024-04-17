@@ -162,12 +162,17 @@ const ManageData_Menu = () => {
                   </div>
                </div>
                <div className='divideIP-Information'>
-                  <div>
+                  <div className='divideIP-Container'>
                      <div className='IP_Information_Title'>
                         <h3>IP information</h3>
                      </div>
+
                      <div className='IP_Information'>
-                        <div className='IP_Data'>
+                        <div className='IP_Data' >
+                           <p>Application ID:</p>
+                           <p >- - -</p>
+                        </div>
+                        <div className='IP_Data' id='GDFS'>
                            <p>Application ID:</p>
                            <p id='IP2'>- - -</p>
                         </div>

@@ -39,7 +39,7 @@
     overflow-y: auto;
 }
 .UsersInList{
-    background-color: rgb(140, 76, 192);
+    background-color: rgb(74, 175, 170);
     width: 100%;
     height: 6vh;
     display: flex;
@@ -49,7 +49,7 @@
     color: white;
 }
 .UsersInList:nth-child(even){
-    background-color:rgb(228, 205, 247);
+    background-color:rgb(169, 233, 241);
     color: black;
 }
 .UsersInList h2{
@@ -135,4 +135,40 @@
     color: white;
     border-radius: 1em;
     display: none;
+}
+.ServerInfo{
+    display: flex;
+    align-items: center;
+    /* background-color: red; */
+    justify-content: space-between;
+    padding-left: 5vh;
+    padding-right: 5vh;    
+}
+.User-ServerDivision{
+    text-align: center;
+    background-color: #52439f;
+    color: white;
+}
+.User-ServerDivision h1{
+    background-color: white;
+    color: black;
+}
+.ServerInfo h4, .ServerInfo p{    
+    margin: 1vh;
+}
+.ServerInfo p{
+    background-color: white;
+    color: black;
+    width: 15vh;
+    border-radius: 1em;
+}
+#serverchangeText{
+    margin-bottom: 0.2em;
+}
+#serversSelectorAdmin{
+    border: none;
+    width: 30vh;
+    text-align: center;
+    height: 3vh;
+    border-radius: 1em;
 }

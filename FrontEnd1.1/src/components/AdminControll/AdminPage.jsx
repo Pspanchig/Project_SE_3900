@@ -4,6 +4,7 @@ import './Css/AdminPage.css'
 const AdminPage = () => {
 
   const [users, setUsers] = useState([]);
+  const [servers, setServers] = useState([]);
   const [localURL, setLocalURL] = useState();
   const [newUserData, setNewUserData] = useState([]);
   const [localUser, setLocalUser] = useState('None');
@@ -13,9 +14,7 @@ const AdminPage = () => {
     const response = await fetch(url);;
     const data = await response.json();    
     setUsers(data);
-    console.log(users)
   }
-
   const addAppIDByClick = (e) => {
     const url = `http://localhost:8080/users/${e.id}`;
     const MID = document.getElementById('addMID');
@@ -25,17 +24,12 @@ const AdminPage = () => {
     const MQS = document.getElementById('addMQS');
     const span = document.getElementById('AdminSpan');
 
-    if(MID.value === "null" ||
-       PUP.value === "null" ||
-       TCS.value === "null" ||
-       INF.value === "null" ||
-       MQS.value === "null" ) {
-         span.style.display="block";
-        setTimeout(() => {
-          span.style.display="none";
-        }, 2000);
-       }
-    else{
+    if(localUser === 'None' || localUser === '') {
+      span.style.display="block";
+      setTimeout(() => {
+        span.style.display="none";
+      }, 2000);
+     }
       span.style.display="none";
       const data = {
         username: e.username,
@@ -50,12 +44,9 @@ const AdminPage = () => {
         canAccesTCS: TCS.value
       };
       setNewUserData(data);
-      console.log(newUserData)
       setLocalURL(url)
-      setLocalUser(newUserData.username)
-    }
+      setLocalUser(newUserData.username)    
   };
-
   const SubmitButton = async () =>{  
     
     const MID = document.getElementById('addMID');
@@ -65,16 +56,12 @@ const AdminPage = () => {
     const MQS = document.getElementById('addMQS');
     const span = document.getElementById('AdminSpan1');
 
-    if(MID.value === "null" ||
-       PUP.value === "null" ||
-       TCS.value === "null" ||
-       INF.value === "null" ||
-       MQS.value === "null" ) {
-         span.style.display="block";
-        setTimeout(() => {
-          span.style.display="none";
-        }, 2000);
-       }
+    if(localUser === 'None' || localUser === '') {
+      span.style.display="block";
+      setTimeout(() => {
+        span.style.display="none";
+      }, 2000);
+     }
     else{
       await fetch(localURL, {
         method: 'PUT',
@@ -97,9 +84,31 @@ const AdminPage = () => {
       + "\n" + "TCS: " + JSON.stringify(newUserData.canAccesTCS));
     }
   }
+  const getServersFromDB = async () =>{
+    const url = 'http://localhost:8080/GetAllServers'
+    const response = await fetch(url);
+    const data = await response.json();    
+    setServers(data);
+  }
+  const getInformationFromList = (e) =>{
+    console.log(e);   
+    const hostname = document.getElementById('serverHostname');
+    const DestAddress = document.getElementById('serverDestAddress');
+    const DestPort = document.getElementById('serverDestPort');
+    const DateModified = document.getElementById('serverDateModified');
+    const ModifyBy = document.getElementById('serverModified');
+    const CreatedBy = document.getElementById('serverCreated');
 
+    hostname.innerHTML = e.hostname;
+    DestAddress.innerHTML = e.destinationAddress;
+    DestPort.innerHTML = e.destinationPort;
+    DateModified.innerHTML = e.dateCreated.substring(0,10);
+    ModifyBy.innerHTML = e.modifyBy;
+    CreatedBy.innerHTML = e.createdBy;
+  }
   useEffect(() =>{
     getUsersFromDB();
+    getServersFromDB();
   }, [])
   
   return (
@@ -131,7 +140,7 @@ const AdminPage = () => {
                   <div className='ChangeAccesItem'>
                     <label htmlFor="">Give access controll to Middleware</label>
                     <select name="" id="addMID">
-                      <option value="null">Select an option</option>
+                      <option value={false}>Select an option</option>
                       <option value={false}>No</option>
                       <option value={true}>Yes</option>                      
                     </select>
@@ -139,7 +148,7 @@ const AdminPage = () => {
                   <div className='ChangeAccesItem'>
                     <label htmlFor="">Give access controll to Puppet</label>
                     <select name="" id="addPUP">
-                      <option value="null">Select an option</option>
+                      <option value={false}>Select an option</option>
                       <option value={false}>No</option>
                       <option value={true}>Yes</option>       
                     </select>
@@ -147,7 +156,7 @@ const AdminPage = () => {
                   <div className='ChangeAccesItem'>
                     <label htmlFor="">Give access controll to Teller</label>
                     <select name="" id="addTEL">
-                      <option value="null">Select an option</option>
+                      <option value={false}>Select an option</option>
                       <option value={false}>No</option>
                       <option value={true}>Yes</option>       
                     </select>
@@ -155,7 +164,7 @@ const AdminPage = () => {
                   <div className='ChangeAccesItem'>
                     <label htmlFor="">Give access controll to Message Queuing Service</label>
                     <select name="" id="addMQS">
-                      <option value="null">Select an option</option>
+                      <option value={false}>Select an option</option>
                       <option value={false}>No</option>
                       <option value={true}>Yes</option>       
                     </select>
@@ -163,21 +172,47 @@ const AdminPage = () => {
                   <div className='ChangeAccesItem'>
                     <label htmlFor="">Give access controll to Infrastructure</label>
                     <select name="" id="addINF">
-                      <option value="null">Select an option</option>
+                      <option value={false}>Select an option</option>
                       <option value={false}>No</option>
                       <option value={true}>Yes</option>       
                     </select>
                   </div>
                 </div>
               </div>
-            </div>
-           
+            </div>           
             <div className='AdminControlUser-Server'>
               <div className='User-ServerDivision'>
-                3
+                <h1>Select a server</h1>
+                <p>Select a server to display all its information</p>
+                <select name="" id="serversSelectorAdmin">
+                  <option value="null">Select a server</option>
+                  {
+                    servers.map((server, index) =>(
+                      <option key={index} value={server.hostname} onClick={() => getInformationFromList(server)}>{server.hostname}</option>
+                    ))
+                  }
+                </select>
               </div>
               <div className='User-ServerDivision'>
-                4
+                <h1 id='serverchangeText'>Server information</h1>
+                <div className='ServerInfo'>
+                  <h4>Hostname</h4><p id='serverHostname'>---</p>
+                </div>
+                <div className='ServerInfo'>
+                  <h4>Destination Address</h4><p id='serverDestAddress'>---</p>
+                </div>
+                <div className='ServerInfo'>
+                  <h4>Destination Port</h4><p id='serverDestPort'>---</p>
+                </div>
+                <div className='ServerInfo'>
+                  <h4>Date Modified</h4><p id='serverDateModified'>---</p>
+                </div>
+                <div className='ServerInfo'>
+                  <h4>Modified by</h4><p id='serverModified'>---</p>                  
+                </div>
+                <div className='ServerInfo'>
+                  <h4>Created by</h4><p id='serverCreated'>---</p>                  
+                </div>
               </div>
             </div>  
           </div>
