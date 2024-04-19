@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 const ModifyDataPage = () => {
 
+  const [spanMessage, setSpanMessage] = useState();
   const [removeIP, setRemoveIP] = useState([]);
   const [removeServer, setRemoveServer] = useState([]);
   const [changeIP, setchangeIP] = useState([]);
@@ -17,7 +18,6 @@ const ModifyDataPage = () => {
     const data = await response.json();
     return data;
   }
-
   const ipFilterByAppId = async () => {
     const data = await getAllPeopleFromDB();
     const IPs = await getIP();
@@ -45,7 +45,6 @@ const ModifyDataPage = () => {
        option.style.display = displayOption ? 'block' : 'none';
     });
   };
-  
   const placeAppsID = async() =>{
     const data = await getAllPeopleFromDB();
     const currentUser = localStorage.getItem('currentUser');
@@ -55,9 +54,6 @@ const ModifyDataPage = () => {
     (userCurrentInfo.canAccesPup === true) ? document.querySelectorAll('.optionPup').forEach((appid) =>{appid.style.display='block'}) : document.querySelectorAll('.optionPup').forEach((appid) =>{appid.style.display='none'});
     (userCurrentInfo.canAccesTCS === true) ? document.querySelectorAll('.optionTCS').forEach((appid) =>{appid.style.display='block'}) : document.querySelectorAll('.optionTCS').forEach((appid) =>{appid.style.display='none'});
     (userCurrentInfo.canAccesMQS === true) ? document.querySelectorAll('.optionMQS').forEach((appid) =>{appid.style.display='block'}) : document.querySelectorAll('.optionMQS').forEach((appid) =>{appid.style.display='none'});   
-  }
-  const goToExport = () =>{
-    navigator('/dashboard/export')
   }
   const removeIPfromDB = async(e) =>{
     const url = 'http://localhost:8080/deleteByIp/' + e
@@ -122,23 +118,39 @@ const ModifyDataPage = () => {
     const serverInput = document.getElementById('server-input')
     const applicationID = document.getElementById('application_info');
     const port = document.getElementById('port-number');
+    const validIP = ipInput.value.split("")
+    const span = document.getElementById('spanModify');
+    const span1 = document.getElementById('spanModify1');
 
-    if(ipInput.value.trim() !== "" && serverInput.value.trim() !== ""){
-      submitNewIP();
-      ipInput.value="";
-      serverInput.selectedIndex = 0;
-      port.value= '';
-      applicationID.selectedIndex = 0;
-      console.log(applicationID + 'Here')
 
-    } else{
-      alert('Please fill out all fields before submitting.')
-    }
+    validIP.forEach(element =>{      
+       if(!element.includes(".") && validIP.length <= 7){
+        span.style.display = 'flex'
+        setTimeout(() => {
+          span.style.display = 'none'
+        }, 2000);
+      } else{
+          if(ipInput.value.trim() !== "" && serverInput.value.trim() !== "" && serverInput.selectedIndex != 0 && applicationID.selectedIndex != 0){
+            submitNewIP();
+            ipInput.value="";
+            serverInput.selectedIndex = 0;
+            port.value= '';
+            applicationID.selectedIndex = 0;
+            console.log(applicationID + 'Here')
+            
+          } else{        
+            span1.style.display = 'flex'
+            setTimeout(() => {
+              span1.style.display = 'none'
+            }, 2000);
+        }
+      } 
+
+    })
   }  
   const removeFromList = (e) =>{
     console.log(e,'it has been removed')
-    const ipSelected = removeIP.find(ip => ip === e);
-    console.log(ipSelected.server)
+    const ipSelected = changeIP.find(ip => ip.ip === e);
     const button = document.getElementById('RemoveIPButton')
 
     const changeIPs = document.getElementById('DI-Item-ip')
@@ -162,11 +174,10 @@ const ModifyDataPage = () => {
   const UpdateFromDB = async (e)=> {
     const url ='http://localhost:8080/updateByIp/' + e.id
     const ip = document.getElementById('ip-input-modify');
-    const server = document.getElementById('server-input-modify');
     const port = document.getElementById('port-input-modify');
+    const server = document.getElementById('server-input-modify');
     const applicationID = document.getElementById('application-id-modify');    
     const currentUser = localStorage.getItem('currentUser');
-
     const date = new Date().toISOString();     
 
     const data = {
@@ -176,25 +187,20 @@ const ModifyDataPage = () => {
       applicationID: server.value,
       port: port.value,
       createdBy: e.createdBy,
-      modifyBy: currentUser
-      
+      modifyBy: currentUser      
     }
     
-    if(ip.value === '') {
-      alert("Empty")
-    }    
-    else {
-      await fetch(url, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      })
-  
-      ip.value = '';
-      server.selectedIndex = 0;
-      port.value = ''; 
-      applicationID.selectedIndex = 0;
-    }
+    
+    await fetch(url, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+
+    ip.value = '';
+    server.selectedIndex = 0;
+    port.value = ''; 
+    applicationID.selectedIndex = 0;    
 
     
   }
@@ -210,12 +216,23 @@ const ModifyDataPage = () => {
     const changeServer = document.getElementById('DI-Item-server')
     const changeDate = document.getElementById('DI-Item-date')
 
+    const ip = document.getElementById('ip-input-modify');
+    const port = document.getElementById('port-input-modify');      
+    
+    ip.value=ipSelected.ip;
+    port.value=ipSelected.port;
+
     changeIPs.innerHTML = ipSelected.ip
     changePort.innerHTML = ipSelected.port
     changeAppID.innerHTML = ipSelected.applicationID
     changeServer.innerHTML = ipSelected.server;
     changeDate.innerHTML = ipSelected.date.substring(0,10);
-    submitButton.addEventListener("click", ()=>{UpdateFromDB(ipSelected);  selector.selectedIndex = 0;})      
+
+    if(ip.value.trim() !== "" && port != ''){
+      submitButton.addEventListener("click", ()=>{UpdateFromDB(ipSelected);  selector.selectedIndex = 0;})      
+    }else{
+      console.error("Error de subnoraml")
+    }
 
   }
   const CheckAdminPrivilege = () => {
@@ -241,7 +258,8 @@ const ModifyDataPage = () => {
     const RemoveServerDiv = document.getElementById('RemoveServerDiv');
     const AddServerDiv = document.getElementById('AddServerDiv');
     const ChangeServerDiv = document.getElementById('ModifyServerDiv');
-
+    const ChangeDataIP = document.getElementById('DisplayInfo-Modify')
+    const ChangeDataServer = document.getElementById('DisplayInfo-Modify1')
 
     modifyIP.style.backgroundColor= "rgb(80, 74, 106)";
     modifyServer.style.backgroundColor = "#7163BA";
@@ -249,6 +267,8 @@ const ModifyDataPage = () => {
     ChangeServerDiv.style.display = 'none'
     AddServerDiv.style.display = 'none'
     RemoveServerDiv.style.display = 'none'
+    ChangeDataIP.style.display='block'
+    ChangeDataServer.style.display='none'
     RemoveIpDiv.style.display = 'block'
     AddIPDiv.style.display = 'flex'
     ChangeIPDiv.style.display = 'flex'
@@ -263,7 +283,11 @@ const ModifyDataPage = () => {
     const AddServerDiv = document.getElementById('AddServerDiv');
     const ChangeIPDiv = document.getElementById('ModifyIPDiv');
     const ChangeServerDiv = document.getElementById('ModifyServerDiv');
-
+    const ChangeDataIP = document.getElementById('DisplayInfo-Modify')
+    const ChangeDataServer = document.getElementById('DisplayInfo-Modify1')
+    
+    ChangeDataIP.style.display='none'
+    ChangeDataServer.style.display='block'
     ChangeServerDiv.style.display = 'flex'
     AddServerDiv.style.display = 'flex'
     RemoveServerDiv.style.display = 'block'
@@ -349,7 +373,7 @@ const ModifyDataPage = () => {
     DestAddres.value = '';
     DestPort.value = '';
   }
-  
+
   useEffect(() =>{  
     placeAppsID();
     placeIPs()  ;
@@ -361,10 +385,12 @@ const ModifyDataPage = () => {
     <div className='ModifyDataPage'>
         <div className='MoDTitle'>
             <h1>Modify Data</h1>
+            <span id='spanModify' className='Span_Modify'>Invalid IP!, please write a valid</span>
+            <span id='spanModify1' className='Span_Modify'>Please fill out all fields before submitting</span>
             <div className='ModifyServerOrIP'>
               <button className='MBO' id='ModifyIpByClick' onClick={ipModifySelected}>Modify IP</button>
               <button className='MBO' id='ModifyServerByClick' onClick={serverModifySelected}>Modify Server</button>
-            </div>
+            </div>            
         </div>
 
         <section>
@@ -557,15 +583,6 @@ const ModifyDataPage = () => {
               </div>
           </div>
         </div>
-        {/* <div className='RemovIPDiv' id='GoToExportPage-Modify'>
-          <div id='ExportIpDiv'>
-            <h2 id='Exportb'>Go to export page</h2>  
-            <div className='GoToExportInfo'>
-              <p>Click in the button below to export your IPs as an excel file</p>
-              <button id='GO' onClick={goToExport}>Export file</button>
-            </div>
-          </div>
-        </div> */}
         <div className='changeItem1' id='DisplayInfo-Modify'>
           <div className='DisplayInfo-changeItem1'>
             <h2 id='Exportb'>Selected IP data</h2> 
@@ -585,6 +602,22 @@ const ModifyDataPage = () => {
               <div className='DI-Item'>
                 <h4>Date: </h4> <p id='DI-Item-date'>---</p>
               </div>            
+            </div>             
+          </div>
+        </div>
+        <div className='changeItem1' id='DisplayInfo-Modify1'>
+          <div className='DisplayInfo-changeItem1'>
+            <h2 id='Exportb'>Selected server data</h2> 
+            <div className='informationChangeDiv'>
+              <div className='DI-Item'>
+                <h4>Hostname: </h4> <p id='DI-Item-Hostname'>---</p>
+              </div>            
+              <div className='DI-Item'>
+                <h4>Dest. Address: </h4> <p id='DI-Item-DestAddress'>---</p>
+              </div>            
+              <div className='DI-Item'>
+                <h4>Destination Port: </h4> <p id='DI-Item-port'>---</p>
+              </div>                     
             </div>             
           </div>
         </div>

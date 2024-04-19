@@ -7,7 +7,9 @@ import { useEffect, useState } from 'react';
 const ExportPage = () => {
 
   const [url, setUrl] = useState(null);
-
+  const [fileName, setFileName] = useState();
+  const [permissions, setPermissions] = useState();
+  
   const exportData = async () => {
     try {      
       
@@ -36,31 +38,82 @@ const ExportPage = () => {
       }
   
       const blob = new Blob([s2ab(libroOut)], {type: "application/octet-stream"});
-      saveAs(blob, "IPs.xlsx");
+      saveAs(blob, `${fileName}.xlsx`);
     } catch (error) {
         console.error("Error: ", error);
     }
   };
   const changeToAllData = () =>{
     setUrl('http://localhost:8080/GetAllIPs');
+    setFileName("All_IP")
+
     const item1 = document.getElementById('changeToAllData');
     const item2 = document.getElementById('changeToWhiteList');
+    const item3 = document.getElementById('changeToServers');
+    const item4 = document.getElementById('changeToUsers');
 
-    item1.style.backgroundColor = 'gray'
     item2.style.backgroundColor = 'white'
-    item1.style.color = 'white'
+    item1.style.backgroundColor = 'gray'
+    item3.style.backgroundColor = 'white'
+    item4.style.backgroundColor = 'white'
     item2.style.color = 'black'
+    item1.style.color = 'white'
+    item3.style.color = 'black'
+    item4.style.color = 'black'
   }
   const changeToWhiteList = () =>{
     setUrl('http://localhost:8080/GetWhiteList');
-
+    setFileName("All_WhiteList_IP")
     const item1 = document.getElementById('changeToAllData');
     const item2 = document.getElementById('changeToWhiteList');
+    const item3 = document.getElementById('changeToServers');
+    const item4 = document.getElementById('changeToUsers');
 
     item2.style.backgroundColor = 'gray'
     item1.style.backgroundColor = 'white'
+    item3.style.backgroundColor = 'white'
+    item4.style.backgroundColor = 'white'
     item2.style.color = 'white'
     item1.style.color = 'black'
+    item3.style.color = 'black'
+    item4.style.color = 'black'
+  }
+  const changeToServers = () =>{
+    setUrl('http://localhost:8080/GetAllServers')
+    setFileName("All_Servers")
+
+    const item1 = document.getElementById('changeToAllData');
+    const item2 = document.getElementById('changeToWhiteList');
+    const item3 = document.getElementById('changeToServers');
+    const item4 = document.getElementById('changeToUsers');
+
+    item2.style.backgroundColor = 'white'
+    item1.style.backgroundColor = 'white'
+    item3.style.backgroundColor = 'gray'
+    item4.style.backgroundColor = 'white'
+    item2.style.color = 'black'
+    item1.style.color = 'black'
+    item3.style.color = 'white'
+    item4.style.color = 'black'
+  }
+  const changeToUsers = () =>{
+    setUrl('http://localhost:8080/GetAllUsers')
+    setFileName("All_Users ")
+
+    const item1 = document.getElementById('changeToAllData');
+    const item2 = document.getElementById('changeToWhiteList');
+    const item3 = document.getElementById('changeToServers');
+    const item4 = document.getElementById('changeToUsers');
+
+    item2.style.backgroundColor = 'white'
+    item1.style.backgroundColor = 'white'
+    
+    item3.style.backgroundColor = 'white'
+    item4.style.backgroundColor = 'gray'
+    item2.style.color = 'black'
+    item1.style.color = 'black'
+    item3.style.color = 'black'
+    item4.style.color = 'white'
   }
   const displaySpan = () =>{
     const span = document.getElementById('span-export');
@@ -70,7 +123,14 @@ const ExportPage = () => {
       span.style.display = 'none';
     }, 1000);
   }
+  const CheckAdminPrivilege = () => {
+    const privilege = localStorage.getItem('privilage');
+    setPermissions(privilege)
+  }
 
+  useEffect(() =>{
+    CheckAdminPrivilege();
+  })
 
   return (
     <div className='ExportPage'>
@@ -88,6 +148,14 @@ const ExportPage = () => {
                   </div>
                     <button onClick={changeToAllData} id='changeToAllData'>Export All IPs and data</button>
                     <button onClick={changeToWhiteList} id='changeToWhiteList'>Export white listed IPs and data</button>
+                    {
+                      permissions === `"Admin"`&& (
+                        <>
+                          <button onClick={changeToServers} id='changeToServers'>Export servers information</button>
+                          <button onClick={changeToUsers} id='changeToUsers'>Export users information</button>
+                        </>
+                      )
+                    }
                 </div>
                 <div className='leftEx'>
                     <span className='span-export' style={{display: "none"}} id='span-export'>Please select an export option</span>

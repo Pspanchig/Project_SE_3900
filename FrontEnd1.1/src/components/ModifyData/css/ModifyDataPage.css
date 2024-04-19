@@ -261,9 +261,13 @@
 .informationChangeDiv{
    background-color: #026E0D;
    border-radius: 1em;
+   height: 23vh;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
 }
 .DisplayInfo-changeItem1{
-   margin: 1em;
+   margin: 1em;   
 }
 .DI-Item{
    margin-top: .7em;
@@ -301,5 +305,8 @@
    margin-left: auto;
 }
 #RemoveServerDiv, #AddServerDiv,#ModifyServerDiv {
+   display: none;
+}
+#DisplayInfo-Modify1{
    display: none;
 }
