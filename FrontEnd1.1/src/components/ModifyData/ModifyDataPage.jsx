@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom'
 
 const ModifyDataPage = () => {
 
-  const [spanMessage, setSpanMessage] = useState();
   const [removeIP, setRemoveIP] = useState([]);
   const [removeServer, setRemoveServer] = useState([]);
   const [changeIP, setchangeIP] = useState([]);
@@ -200,10 +199,19 @@ const ModifyDataPage = () => {
     ip.value = '';
     server.selectedIndex = 0;
     port.value = ''; 
-    applicationID.selectedIndex = 0;    
-
-    
+    applicationID.selectedIndex = 0;        
   }
+
+  const editServerFromDataBase = async (url, data) =>{    
+
+    alert("Server succesfully edited")
+    await fetch(url, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })     
+  }
+
   const UpdateFromList = (e) =>{
     const ipSelected = changeIP.find(ip => e ===  ip.ip);
     const submitButton = document.getElementById('change')
@@ -233,6 +241,43 @@ const ModifyDataPage = () => {
     }else{
       console.error("Error de subnoraml")
     }
+
+  }
+
+
+  const editServerinList = async (e) =>{
+
+    const servers = await getServersFromDB()
+    const serverSelected = servers.find(server => e === server.hostname)
+    const url = 'http://localhost:8080/updateServerById/' + serverSelected.id;
+    const hostname = document.getElementById('server-hostname-modify');
+    const DestAddress = document.getElementById('server-DestAddress-input-modify');
+    const Port = document.getElementById('server-DestinationPort-modify');
+    const currentUser = localStorage.getItem('currentUser');
+    const date = new Date();
+    const button = document.getElementById('changeServer');
+    const selector = document.getElementById('SelectorModify');
+    const hostnameHtml = document.getElementById('DI-Item-Hostname')
+    const DestAddressHtml = document.getElementById('DI-Item-DestAddress')
+    const DestPortHtml = document.getElementById('DI-Item-DestPort')
+    
+    hostname.value= serverSelected.hostname;
+    DestAddress.value = serverSelected.destinationAddress;
+    Port.value =  serverSelected.destinationPort;
+    hostnameHtml.innerHTML = serverSelected.hostname;
+    DestAddressHtml.innerHTML = serverSelected.destinationAddress;
+    DestPortHtml.innerHTML = serverSelected.destinationPort
+
+    const data = {
+      hostname: hostname.value,
+      destinationAddress: DestAddress.value,
+      destinationPort: Port.value,
+      createdBy: serverSelected.createdBy,
+      modifyBy: currentUser,
+      dateCreated: date
+    }
+
+    button.addEventListener( 'click', async ()=>{ editServerFromDataBase(url, data); selector.selectedIndex=0})
 
   }
   const CheckAdminPrivilege = () => {
@@ -285,7 +330,7 @@ const ModifyDataPage = () => {
     const ChangeServerDiv = document.getElementById('ModifyServerDiv');
     const ChangeDataIP = document.getElementById('DisplayInfo-Modify')
     const ChangeDataServer = document.getElementById('DisplayInfo-Modify1')
-    
+
     ChangeDataIP.style.display='none'
     ChangeDataServer.style.display='block'
     ChangeServerDiv.style.display = 'flex'
@@ -304,48 +349,25 @@ const ModifyDataPage = () => {
   const removeServerFromList = async (e) =>{
     const url = 'http://localhost:8080/deleteServer/' + e
     const button = document.getElementById('RemoveServerButton');
+    
+    const servers = await getServersFromDB();
+    const serverSelected = servers.find((server)=>server.hostname === e)
+
+    const hostname = document.getElementById('DI-Item-Hostname')
+    const DestAddress = document.getElementById('DI-Item-DestAddress')
+    const DestPort = document.getElementById('DI-Item-DestPort')
+    
+    hostname.innerHTML = serverSelected.hostname;
+    DestAddress.innerHTML = serverSelected.destinationAddress;
+    DestPort.innerHTML = serverSelected.destinationPort
+
     button.addEventListener('click', function async(){
       alert("Server has been removed")
       removeServerFromDB(url);
     })
 
   }
-  const editServerFromDataBase = async (url, data) =>{    
-
-    alert("Server succesfully edited")
-    await fetch(url, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    })     
-  }
-  const editServerinList = async (e) =>{
-
-    const servers = await getServersFromDB()
-    const serverSelected = servers.find(server => e === server.hostname)
-    const url = 'http://localhost:8080/updateServerById/' + serverSelected.id;
-    const hostname = document.getElementById('server-hostname-modify');
-    const DestAddress = document.getElementById('server-DestAddress-input-modify');
-    const Port = document.getElementById('server-DestinationPort-modify');
-    const currentUser = localStorage.getItem('currentUser');
-    const date = new Date();
-    const button = document.getElementById('changeServer');
-
-    const data = {
-      hostname: hostname.value,
-      destinationAddress: DestAddress.value,
-      destinationPort: Port.value,
-      createdBy: serverSelected.createdBy,
-      modifyBy: currentUser,
-      dateCreated: date
-    }
-
-    button.addEventListener( 'click', async ()=>{
-      editServerFromDataBase(url, data);
-
-    })
-
-  }
+ 
   const sendNewServer = async () =>{
     const hostname = document.getElementById('hostname-input');
     const DestAddres = document.getElementById('DestAddress-number');
@@ -573,11 +595,11 @@ const ModifyDataPage = () => {
                   </div>
                   <div className='InputGroup-Item'>
                       <label htmlFor="">Change Dest. Address</label>
-                      <input type="number" placeholder='Dest. Address' id='server-DestAddress-input-modify'/>
+                      <input type="text" placeholder='Dest. Address' id='server-DestAddress-input-modify'/>
                   </div>                  
                   <div className='InputGroup-Item'>
                       <label htmlFor="">Change destination Port</label>
-                      <input type="text" placeholder='Destination Port' id='server-DestinationPort-modify' />
+                      <input type="number" placeholder='Destination Port' id='server-DestinationPort-modify' />
                   </div>
                 </div>
               </div>
@@ -616,7 +638,7 @@ const ModifyDataPage = () => {
                 <h4>Dest. Address: </h4> <p id='DI-Item-DestAddress'>---</p>
               </div>            
               <div className='DI-Item'>
-                <h4>Destination Port: </h4> <p id='DI-Item-port'>---</p>
+                <h4>Destination Port: </h4> <p id='DI-Item-DestPort'>---</p>
               </div>                     
             </div>             
           </div>
